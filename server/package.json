@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "server-start":"node index",
+    "dev-start": "nodemon index"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {}
+}
