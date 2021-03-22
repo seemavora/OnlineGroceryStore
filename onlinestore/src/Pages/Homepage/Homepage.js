@@ -5,7 +5,7 @@ class Homepage extends Component {
     return (
         <div>
          <h1>
-           Homepage
+           Homepage 
          </h1>
          {/* add code for Homepage design here */}
         </div>
