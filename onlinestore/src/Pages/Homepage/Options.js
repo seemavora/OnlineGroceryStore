@@ -20,7 +20,7 @@ export default class Options extends Component {
             //bgcolor="#ff000059"
             style={{
               backgroundImage:
-                'url(https://img.hellofresh.com/f_auto,fl_lossy,h_710,q_auto,w_710/hellofresh_website/us/cms/homepage/Recipe%20Slider/Veggie_720x720.jpg)',
+                'url(https://images.immediate.co.uk/production/volatile/sites/2/2016/08/25471.jpg?quality=90&resize=620,413)',
               backgroundPosition: 'center',
             }}
             color="#fff"
