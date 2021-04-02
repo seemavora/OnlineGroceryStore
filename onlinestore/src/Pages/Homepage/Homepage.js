@@ -89,13 +89,14 @@ export default Homepage;
  * @param {...boolean} round Makes image circle (border-radius=50%)
  * @param {...boolean} rounded Makes image rounded (border-radius=5%)
  */
-const Img = ({ src, round, rounded }) => (
+const Img = ({ src, round, rounded, ...rest }) => (
   <img
     style={{
       height: 'auto',
       width: '100%',
       borderRadius: rounded ? '5%' : round ? '50%' : '0%',
     }}
+    {...rest}
     src={src}
   />
 );
