@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Grid, Typography } from '@material-ui/core';
+import { Box, Container, Grid, Typography } from '@material-ui/core';
 import Options from './Options';
-import BottomSections from './BottomSections'
+import BottomSections from './BottomSections';
 
 class Homepage extends Component {
   render() {
@@ -26,17 +26,63 @@ class Homepage extends Component {
             </Typography>
           </Grid>
         </Grid>
-
+        <br />
+        <br />
+        <Grid container spacing={6}>
+          <Grid item xs={12} md={4}>
+            <Box>
+              <Img
+                round
+                src="https://img.hellofresh.com/f_auto,fl_lossy,h_710,q_auto,w_710/hellofresh_website/us/cms/homepage/static_slider/W23_R12_2019_R90128A_MediterraneanMezzePlatter360x360.jpg"
+              ></Img>
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Box>
+              <Img
+                round
+                src="https://img.hellofresh.com/f_auto,fl_lossy,h_710,q_auto,w_710/hellofresh_website/us/cms/homepage/Recipe%20Slider/20min_720x720.jpg"
+              ></Img>
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Box>
+              <Img
+                round
+                src="https://img.hellofresh.com/f_auto,fl_lossy/hellofresh_website/us/cms/instagram/sixth_image.jpeg"
+              ></Img>
+            </Box>
+          </Grid>
+        </Grid>
+        <br />
+        <br />
         {/* Option section */}
-        <Options/>
-        <br/>
-        <br/>
+        <Options />
+        <br />
 
         {/* Bottom sections */}
-        <BottomSections/>
+        <BottomSections />
       </Container>
     );
   }
 }
 
 export default Homepage;
+
+/**
+ * image tag
+ *
+ * @param {...string} src The image source
+ * @param {...boolean} round Makes image circle (border-radius=50%)
+ * @param {...boolean} rounded Makes image rounded (border-radius=5%)
+ */
+const Img = ({ src, round, rounded }) => (
+  <img
+    style={{
+      height: 'auto',
+      width: '100%',
+      borderRadius: rounded ? '5%' : round ? '50%' : '0%',
+    }}
+    src={src}
+  />
+);
