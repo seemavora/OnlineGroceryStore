@@ -21,7 +21,7 @@ export class Navbar extends Component {
         <div className="menu" onClick={this.menuToggle}>
           <img src={Menu} alt="" width="20" />
         </div>
-        <div classname="logo">
+        <div className="logo">
           <h1>
             <Link to="/">OFS</Link>
           </h1>
@@ -43,11 +43,11 @@ export class Navbar extends Component {
             <li>
               <Link to="/login">Login / Register</Link>
             </li>
-            <li classname="close" onClick={this.menuToggle}>
+            <li className="close" onClick={this.menuToggle}>
               <img src={Close} alt="" width="20" />
             </li>
           </ul>
-          <div classname="nav-cart">
+          <div className="nav-cart">
             <span>0</span>
             <Link to="/cart">
               <img src={CartIcon} alt="" width="20" />
