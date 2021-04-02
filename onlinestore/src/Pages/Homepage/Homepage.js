@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Grid, Typography } from '@material-ui/core';
 import Options from './Options';
+import BottomSections from './BottomSections'
+
 class Homepage extends Component {
   render() {
     return (
@@ -27,8 +29,11 @@ class Homepage extends Component {
 
         {/* Option section */}
         <Options/>
+        <br/>
+        <br/>
 
-        {/*  */}
+        {/* Bottom sections */}
+        <BottomSections/>
       </Container>
     );
   }
