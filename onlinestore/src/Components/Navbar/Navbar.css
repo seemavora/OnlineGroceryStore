@@ -8,7 +8,7 @@ header {
 header .logo a {
   text-decoration: none;
   text-transform: uppercase;
-  color: black;
+  color: white;
 }
 header nav {
   display: flex;
@@ -20,15 +20,48 @@ nav ul li {
 nav ul li a {
   text-decoration: none;
   text-transform: uppercase;
-  color: #555;
   padding: 0 15px;
 }
 nav ul li a:hover {
-  color: lightseagreen;
+  color: yellow;
 }
 nav .nav-cart {
   cursor: pointer;
   position: relative;
+}
+
+header .menu,
+header .close {
+  cursor: pointer;
+  display: none;
+}
+
+header {
+  min-height: 70px;
+  background: rgb(7, 78, 13);
+  color: whitesmoke;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+header .logo {
+  margin-left: 50px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+header ul {
+  list-style: none;
+  margin-right: 50px;
+}
+header ul li a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+header .nav-cart {
+  margin-right: 75px;
+  margin-top: 15px;
 }
 nav .nav-cart span {
   position: absolute;
@@ -36,42 +69,8 @@ nav .nav-cart span {
   right: -7px;
   background: crimson;
   font-size: 10px;
-  color: white;
+  color: whitesmoke;
   padding: 3px 5px;
   border-radius: 50%;
-  z-index: -1;
-}
-header .menu,
-header .close {
-  cursor: pointer;
-  display: none;
-}
-@media (max-width: 650px) {
-  header ul {
-    position: fixed;
-    top: -100%;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: column;
-    background: white;
-    z-index: 99;
-    opacity: 0.97;
-    transition: 0.5s linear;
-  }
-  header .menu,
-  header .close {
-    display: block;
-  }
-  header .close {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-  }
-  header ul.toggle {
-    top: 0;
-  }
+  z-index: 1000;
 }
