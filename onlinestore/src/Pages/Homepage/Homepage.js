@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { Box, Container, Grid, Typography } from '@material-ui/core';
 import Options from './Options';
 import BottomSections from './BottomSections';
-
+import Navbar from '../../Components/Navbar/Navbar'
 class Homepage extends Component {
   render() {
     return (
       <Container fluid>
+        <Navbar/>
         {/* Header section */}
         <Grid container justify="center">
           <Grid item xs={12}>
