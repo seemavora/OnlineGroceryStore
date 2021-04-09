@@ -1,0 +1,76 @@
+header {
+  min-height: 70px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  overflow: hidden;
+}
+header .logo a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
+}
+header nav {
+  display: flex;
+}
+nav ul li {
+  list-style: none;
+  display: inline-block;
+}
+nav ul li a {
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0 15px;
+}
+nav ul li a:hover {
+  color: yellow;
+}
+nav .nav-cart {
+  cursor: pointer;
+  position: relative;
+}
+
+header .menu,
+header .close {
+  cursor: pointer;
+  display: none;
+}
+
+header {
+  min-height: 70px;
+  background: rgb(7, 78, 13);
+  color: whitesmoke;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+header .logo {
+  margin-left: 50px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+header ul {
+  list-style: none;
+  margin-right: 50px;
+}
+header ul li a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+header .nav-cart {
+  margin-right: 75px;
+  margin-top: 15px;
+}
+nav .nav-cart span {
+  position: absolute;
+  top: -12px;
+  right: -7px;
+  background: crimson;
+  font-size: 10px;
+  color: whitesmoke;
+  padding: 3px 5px;
+  border-radius: 50%;
+  z-index: 1000;
+}
