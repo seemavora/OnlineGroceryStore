@@ -25,3 +25,12 @@ mongoose.connect(process.env.MDB_CONNECT,{
   console.log("Connected to MongoDB");
 });
 
+<<<<<<< HEAD
+=======
+// set up routes
+
+app.use("/auth", require("./routers/userRouter"));
+app.use("/customer", require("./routers/customerRouter"));
+
+
+>>>>>>> Adds the Middleware
