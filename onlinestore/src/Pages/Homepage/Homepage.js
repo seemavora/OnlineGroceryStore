@@ -24,7 +24,7 @@ class Homepage extends Component {
         <Grid container justify="center">
           <Grid item xs={12}>
             <Typography align="center" variant="h2">
-              lorem ipsum
+              hello 
             </Typography>
           </Grid>
           <Grid item xs={12} md={6}>
