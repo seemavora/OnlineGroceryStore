@@ -37,6 +37,8 @@ class Homepage extends Component {
               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </Typography>
+            <br />
+            <br />
             <Img src="/images/Veggie_720x720.jpeg"/>
           </Grid>
         </Grid>

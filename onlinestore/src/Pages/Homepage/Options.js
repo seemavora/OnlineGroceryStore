@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Box, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
+import Modal from '@material-ui/core/Modal';
 
 const images = [
   {
@@ -92,8 +93,7 @@ const useStyles = makeStyles((theme) => ({
   imageTitle: {
     position: 'relative',
     padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${
-      theme.spacing(1) + 6
-    }px`,
+      theme.spacing(1) + 6}px`,
   },
   imageMarked: {
     height: 3,
@@ -104,14 +104,29 @@ const useStyles = makeStyles((theme) => ({
     left: 'calc(45% - 9px)',
     transition: theme.transitions.create('opacity'),
   },
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 }));
 
 function CoolButtons() {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <div className={classes.root}>
       {images.map((image) => (
         <ButtonBase
+          onClick={handleOpen}
           focusRipple
           key={image.title}
           className={classes.image}
@@ -143,6 +158,20 @@ function CoolButtons() {
           </span>
         </ButtonBase>
       ))}
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+        className={classes.modal}
+      >
+        <div>
+          <h2 id="transition-modal-title">Transition modal</h2>
+          <p id="transition-modal-description">
+            react-transition-group animates me.
+          </p>
+        </div>
+      </Modal>
     </div>
   );
   // return images.map((image, index) => (
