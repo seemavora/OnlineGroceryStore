@@ -4,6 +4,7 @@ import Homepage from './Pages/Homepage/Homepage'
 import Inventory from './Pages/Inventory/Inventory';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/SignUp/SignUp';
+import Navbar from './Components/Navbar/Navbar';
 export default function Routes(props){
   const routes = [
     {
@@ -26,6 +27,7 @@ export default function Routes(props){
 
   return (
     <Router>
+      <Navbar/>
         <Switch>
             {routes.map((route, index) => {
                 return <Route exact key={index}
