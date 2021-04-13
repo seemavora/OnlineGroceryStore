@@ -9,12 +9,16 @@ const images = [
     url:
       'https://images.immediate.co.uk/production/volatile/sites/2/2016/08/25471.jpg?quality=90&resize=620,413',
     title: 'Vegan',
+    body:
+      'Vegan Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     width: '45%',
   },
   {
     url:
       'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimg1.cookinglight.timeinc.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F4_3_horizontal_-_1200x900%2Fpublic%2Fimage%2F2016%2F09%2Fmain%2F1610p34-white-bean-vegetable-bowls-frizzled-eggs-1.jpg%3Fitok%3Dp_bNHGNB&q=85',
     title: 'Vegetarian',
+    body:
+      'Vegetarian Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     backgroundPosition: 'center',
     width: '45%',
   },
@@ -22,12 +26,16 @@ const images = [
     url:
       'https://www.petalumaseared.com/wp-content/uploads/2020/04/meattemp.jpg',
     title: 'Meat, Fish & Poultry',
+    body:
+      'Meat, Fish & Poultry Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     width: '45%',
   },
   {
     url:
       'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/190430-cheesy-bacon-ranch-chicken-226-1556829090.jpg?crop=1.00xw:0.752xh;0,0.151xh&resize=980:*',
     title: 'Keto',
+    body:
+      'Keto Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     width: '45%',
   },
 ];
@@ -93,7 +101,8 @@ const useStyles = makeStyles((theme) => ({
   imageTitle: {
     position: 'relative',
     padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${
-      theme.spacing(1) + 6}px`,
+      theme.spacing(1) + 6
+    }px`,
   },
   imageMarked: {
     height: 3,
@@ -114,16 +123,18 @@ const useStyles = makeStyles((theme) => ({
 function CoolButtons() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [option, setOption] = React.useState(); // getter and setter respectively
 
-  const handleOpen = () => {
+  const handleOpen = (index) => {
     setOpen(true);
+    setOption(index); // knowing which one we're clicking
   };
 
   const handleClose = () => {
     setOpen(false);
   };
 
-{/*stylish box is for the all the options*/}
+  /*stylish box is for the all the options*/
   const StylishBox = styled(Box)({
     background: 'linear-gradient(45deg,#abb94f 10%, #2f503d 50%, #abb94f 90%)',
     border: 0,
@@ -136,7 +147,7 @@ function CoolButtons() {
     margin: '0 auto',
   });
 
-  {/*stylish box small is for the tiny popups*/}
+  /*stylish box small is for the tiny popups*/
   const StylishBoxSmall = styled(Box)({
     background: 'linear-gradient(45deg, #228b22 20%, #006400 90%)',
     border: 0,
@@ -150,63 +161,58 @@ function CoolButtons() {
   });
   return (
     <StylishBox>
-    <div className={classes.root}>
-      
-      {images.map((image) => (
-        <ButtonBase
-          onClick={handleOpen}
-          focusRipple
-          key={image.title}
-          className={classes.image}
-          focusVisibleClassName={classes.focusVisible}
-          style={{
-            width: image.width,
-            margin: '16px auto',
-            borderRadius: 15,
-            overflow: 'hidden',
-          }}
-        >
-          <span
-            className={classes.imageSrc}
+      <div className={classes.root}>
+        {images.map((image, index) => (
+          <ButtonBase
+            onClick={() => handleOpen(index)}
+            name={index}
+            focusRipple
+            key={image.title}
+            className={classes.image}
+            focusVisibleClassName={classes.focusVisible}
             style={{
-              backgroundImage: `url(${image.url})`,
+              width: image.width,
+              margin: '16px auto',
+              borderRadius: 15,
+              overflow: 'hidden',
             }}
-          />
-          <span className={classes.imageBackdrop} />
-          <span className={classes.imageButton}>
-            <Typography
-              component="span"
-              variant="subtitle1"
-              color="inherit"
-              className={classes.imageTitle}
-            >
-              {image.title}
-              <span className={classes.imageMarked} />
-            </Typography>
-          </span>
-        </ButtonBase>
-      
-      ))}
-      
-      <Modal
-      
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-        className={classes.modal}
-      >
-       <StylishBoxSmall>
-        <div>
-          <h2 id="transition-modal-title">Transition modal</h2>
-          <p id="transition-modal-description">
-            react-transition-group animates me.
-          </p>
-        </div>
-      </StylishBoxSmall>
-      </Modal>
-    
-    </div>
+          >
+            <span
+              className={classes.imageSrc}
+              style={{
+                backgroundImage: `url(${image.url})`,
+              }}
+            />
+            <span className={classes.imageBackdrop} />
+            <span className={classes.imageButton}>
+              <Typography
+                component="span"
+                variant="subtitle1"
+                color="inherit"
+                className={classes.imageTitle}
+              >
+                {image.title}
+                <span className={classes.imageMarked} />
+              </Typography>
+            </span>
+          </ButtonBase>
+        ))}
+
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          className={classes.modal}
+        >
+          <StylishBoxSmall>
+            <div>
+              <h2 id="transition-modal-title">{images[option]?.title}</h2>
+              <p id="transition-modal-description">{images[option]?.body}</p>
+            </div>
+          </StylishBoxSmall>
+        </Modal>
+      </div>
     </StylishBox>
   );
   // return images.map((image, index) => (
