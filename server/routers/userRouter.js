@@ -86,4 +86,21 @@ router.get("/logout", (req, res) =>{
   }).send();
 });
 
+//checks if user is loggedin
+router.get("loggedIn", (rez, res) =>{
+  try{
+    //trying to read cookie from request (See if authorized)
+    const token = req.cookies.token; //object to store cookies
+    if(!token){
+      return res.status(200).json(false); //checks if user is logged in
+    }
+    jwt.verify(token, process.env.JWT_SECRET);//returns string/obj compares token to password, if token hasnt been created throw an error
+    res.send(true);
+
+  }catch(err){
+    console.error(err);
+    res.status(200).json(false);
+  }
+});
+
 module.exports = router;
