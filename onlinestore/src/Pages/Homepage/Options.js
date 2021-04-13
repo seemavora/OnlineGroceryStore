@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Box, Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, styled } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Modal from '@material-ui/core/Modal';
 
@@ -122,8 +122,36 @@ function CoolButtons() {
   const handleClose = () => {
     setOpen(false);
   };
+
+{/*stylish box is for the all the options*/}
+  const StylishBox = styled(Box)({
+    background: 'linear-gradient(45deg,#abb94f 10%, #2f503d 50%, #abb94f 90%)',
+    border: 0,
+    borderRadius: 50,
+    boxShadow: '0 3px 5px 2px rgba(165, 188, 163, .3)',
+    color: 'white',
+    width: '100%',
+    height: '100%',
+    padding: '0 30px',
+    margin: '0 auto',
+  });
+
+  {/*stylish box small is for the tiny popups*/}
+  const StylishBoxSmall = styled(Box)({
+    background: 'linear-gradient(45deg, #228b22 20%, #006400 90%)',
+    border: 0,
+    borderRadius: 3,
+    boxShadow: '0 3px 5px 2px rgba(165, 188, 163, .3)',
+    color: 'white',
+    width: 'auto',
+    height: 'auto',
+    padding: '0 30px',
+    margin: '0 auto',
+  });
   return (
+    <StylishBox>
     <div className={classes.root}>
+      
       {images.map((image) => (
         <ButtonBase
           onClick={handleOpen}
@@ -157,22 +185,29 @@ function CoolButtons() {
             </Typography>
           </span>
         </ButtonBase>
+      
       ))}
+      
       <Modal
+      
         open={open}
         onClose={handleClose}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
         className={classes.modal}
       >
+       <StylishBoxSmall>
         <div>
           <h2 id="transition-modal-title">Transition modal</h2>
           <p id="transition-modal-description">
             react-transition-group animates me.
           </p>
         </div>
+      </StylishBoxSmall>
       </Modal>
+    
     </div>
+    </StylishBox>
   );
   // return images.map((image, index) => (
   //   <Box key={`${image.title}_${index}`}>

@@ -8,19 +8,20 @@ import './Homepage.css'
 const StylishBox = styled(Box)({
   background: 'linear-gradient(45deg, #2f503d 20%, #abb94f 90%)',
   border: 0,
-  borderRadius: 3,
-  boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+  borderRadius: 50,
+  boxShadow: '0 3px 5px 2px rgba(165, 188, 163, .3)',
   color: 'white',
   height: 'auto',
   padding: '0 30px',
   margin: '0 auto',
+  
 });
 
 const StylishButton = styled(Button)({
   background: 'linear-gradient(45deg, #abb94f 10%, #2f503d 50%)',
   border: 0,
   borderRadius: 3,
-  boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+  boxShadow: '0 3px 5px 2px rgba(165, 188, 163, .3)',
   color: 'white',
   height: 'auto',
   padding: '0 30px',
@@ -70,9 +71,9 @@ export default class BottomSections extends Component {
           </Box>
         </Grid>
         <Grid item xs = {12}>
-          <Divider />
+        
             <AboutUs/>
-          <Divider />
+
         </Grid>
         <Grid item xs = {12}>
         <Typography align="center">
