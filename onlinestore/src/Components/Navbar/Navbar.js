@@ -1,11 +1,12 @@
-import React, { Component } from "react";
+import React, { Component} from "react";
 import Menu from "./svg/bars-solid.svg";
 import Close from "./svg/times-solid.svg";
 import CartIcon from "./svg/shopping-cart-solid.svg";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+// import AuthContext from "../../Context/AuthContext";
 
-export class Navbar extends Component {
+  export class Navbar extends Component {
   state = {
     toggle: false,
   };
@@ -32,16 +33,16 @@ export class Navbar extends Component {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/product">Products</Link>
+              <Link to="/items">Inventory</Link>
             </li>
             <li>
               <Link to="/contact">Contact</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/signup">Register</Link>
             </li>
             <li>
-              <Link to="/login">Login / Register</Link>
+              <Link to="/login">Login</Link>
             </li>
             <li className="close" onClick={this.menuToggle}>
               <img src={Close} alt="" width="20" />
@@ -58,5 +59,6 @@ export class Navbar extends Component {
     );
   }
 }
+
 
 export default Navbar;
