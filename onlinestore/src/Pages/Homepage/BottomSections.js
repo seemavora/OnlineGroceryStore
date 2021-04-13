@@ -1,126 +1,85 @@
 import React, { Component } from 'react';
-import { Box, Grid, Typography } from '@material-ui/core';
+import { Box, Grid, Typography, Divider, Paper, Table } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import {makeStyles} from '@material-ui/core/styles';
+import {styled} from '@material-ui/core/styles';
+import './Homepage.css'
+ 
+const StylishBox = styled(Box)({
+  background: 'linear-gradient(45deg, #2f503d 20%, #abb94f 90%)',
+  border: 0,
+  borderRadius: 3,
+  boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+  color: 'white',
+  height: 'auto',
+  padding: '0 30px',
+  margin: '0 auto',
+});
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    minWidth: 300,
-    width: '100%',
-  },
-  image: {
-    position: 'relative',
-    height: 200,
-    [theme.breakpoints.down('xs')]: {
-      width: '100% !important', // Overrides inline-style
-      height: 100,
-    },
-    '&:hover, &$focusVisible': {
-      zIndex: 1,
-      '& $imageBackdrop': {
-        opacity: 0.15,
-      },
-      '& $imageMarked': {
-        opacity: 0,
-      },
-      '& $imageTitle': {
-        border: '4px solid currentColor',
-      },
-    },
-  },
-  focusVisible: {},
-  imageButton: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: theme.palette.common.white,
-  },
-  imageSrc: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center 40%',
-  },
-  imageBackdrop: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    backgroundColor: theme.palette.common.black,
-    opacity: 0.4,
-    transition: theme.transitions.create('opacity'),
-  },
-  imageTitle: {
-    position: 'relative',
-    padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${theme.spacing(1) + 6}px`,
-  },
-  imageMarked: {
-    height: 3,
-    width: 18,
-    backgroundColor: theme.palette.common.white,
-    position: 'absolute',
-    bottom: -2,
-    left: 'calc(50% - 9px)',
-    transition: theme.transitions.create('opacity'),
-  },
-}));
+const StylishButton = styled(Button)({
+  background: 'linear-gradient(45deg, #abb94f 10%, #2f503d 50%)',
+  border: 0,
+  borderRadius: 3,
+  boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+  color: 'white',
+  height: 'auto',
+  padding: '0 30px',
+  margin: '16px auto',
+  borderRadius: 15,
+});
 
+
+function AboutUs() {
+  return (
+  <StylishBox> 
+    <Box align="left" m="0 auto" width="600px">
+    <Divider/>
+    <h3 align="center"></h3>
+    <h3 align="center">Here at OFS we value 3 things above all else</h3>
+    
+      <ul>
+        <li>Fresh, Quality Foods</li>
+        <li>Fast Shipping</li>
+        <li>Friendly Customer Service</li>
+      </ul>
+    <p align="left">We work our hardest to make sure that all our food is GMO free and comes from sustainable sources so that you can be confident that you're getting only the best ingredients.</p>
+
+    <h3 align="left">Our Story</h3>
+    <p align="left">Starting as a small, local grocery store in San Jose we realized that our customers didn't have a lot of time to spend
+    the aisles of a grocery store, especially in the high speed world of the Silicon Valley. </p>
+    <p>Our solution was an online storefront so our customers can browse our selection from the comfort of home and have their food delievered right to their doorsteps.</p>
+    <Divider/>
+    </Box>
+  </StylishBox>
+  );
+}
 export default class BottomSections extends Component {
   render() {
     return (
       <Grid container>
         <Grid item xs={12}>
-            <Typography align="center" variant="h4">
-              Bottom Section
-            </Typography>
-        </Grid>
-        <Grid item xs={3}>
+       
         <Box
-            py={20}
-            bgcolor="#ff000059"
-            style={{
-              backgroundImage:
-                'url(/images/LemonLite_bites.png',
-              backgroundPosition: 'center',
-            }}
-            color="#7fff00"
+            color="#2f503d"
+            backgroundColor
+           
           >
-            <Typography align="center" variant="h4">
-              lorem ipsum
+            <Typography align="center" variant="h3">
+              About Us
             </Typography>
           </Box>
         </Grid>
-        <Grid item xs={3}>
-          <Box py={20} bgcolor="#00ffe759">
-            <Typography align="center" variant="h4">
-              lorem ipsum
-            </Typography>
-          </Box>
+        <Grid item xs = {12}>
+          <Divider />
+            <AboutUs/>
+          <Divider />
         </Grid>
-        <Grid item xs={3}>
-          <Box py={20} bgcolor="#0043ff59">
-            <Typography align="center" variant="h4">
-              lorem ipsum
-            </Typography>
-          </Box>
-        </Grid>
-        <Grid item xs={3}>
-          <Box py={20} bgcolor="#1cff0059">
-            <Typography align="center" variant="h4">
-              lorem ipsum
-            </Typography>
-          </Box>
+        <Grid item xs = {12}>
+        <Typography align="center">
+          <StylishButton href="https://www.google.com/webhp?authuser=2">
+                    Sign Up Now
+          </StylishButton>
+        </Typography>
         </Grid>
       </Grid>
     );
