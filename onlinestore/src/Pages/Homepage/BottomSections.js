@@ -20,7 +20,6 @@ const StylishBox = styled(Box)({
 const StylishButton = styled(Button)({
   background: 'linear-gradient(45deg, #2f503d 50%, #2f503d 50%)',
   border: 0,
-  borderRadius: 3,
   boxShadow: '0 3px 5px 2px rgba(165, 188, 163, .3)',
   color: 'white',
   height: 'auto',
