@@ -4,6 +4,7 @@ import axios from "axios";
 import './Login.css';
 import ParticlesBg from 'particles-bg';
 import AuthContext from "../../Context/AuthContext";
+import Button from '@material-ui/core/Button';
 
 export default function Login() {
   const [email, setEmail] = useState(""); 
@@ -47,11 +48,14 @@ export default function Login() {
            value = {password}/>
            <br/>
            <br/>
-           <button type = "submit"> Login </button>
+           <Button type = "submit" variant="contained" classes={{ label: 'button-basics' }} > Login </Button>
+           <br/>
+           <br/>
          </form>
         </div>
          
-         <ParticlesBg num={100} type="fountain" bg={true} />
+         <ParticlesBg num={100} type="square" bg={true}color = '#FFFFFF' />
+  
 
          </div>
     );

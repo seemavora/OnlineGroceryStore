@@ -1,19 +1,20 @@
-import React, {useContext} from "react";
-import {useHistory } from "react-router-dom";
+import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import AuthContext from "../../Context/AuthContext";
+import Button from '@material-ui/core/Button';
 
-function LogOutBtn(){
-const{getLoggedIn} = useContext(AuthContext);
-const history = useHistory();
-  async function logOut(){
+function LogOutBtn() {
+  const { getLoggedIn } = useContext(AuthContext);
+  const history = useHistory();
+  async function logOut() {
     await axios.get("http://localhost:5000/auth/logout");
     await getLoggedIn();
     history.push("/");
   }
-  return <button onClick = {logOut}>
+  return <Button variant="contained" onClick={logOut} className="button-basics">
     Log Out
-  </button>
+  </Button>
 };
 
 export default LogOutBtn;
