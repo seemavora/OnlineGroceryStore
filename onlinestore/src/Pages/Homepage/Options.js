@@ -136,7 +136,7 @@ function CoolButtons() {
 
   /*stylish box is for the all the options*/
   const StylishBox = styled(Box)({
-    background: 'linear-gradient(45deg,#abb94f 10%, #ffed59 50%, #ffed59 90%)',
+    background: 'linear-gradient(45deg,#abb94f 10%, ##ffed59 50%, #ffed59 90%)',
     border: 0,
     borderRadius: 50,
     boxShadow: '0 3px 5px 2px rgba(165, 188, 163, .3)',
