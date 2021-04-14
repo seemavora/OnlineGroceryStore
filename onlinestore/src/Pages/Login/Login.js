@@ -1,11 +1,16 @@
-import React, {useState } from "react";
+import React, {useState, useContext } from "react";
+import {useHistory } from "react-router-dom";
 import axios from "axios";
 import './Login.css';
+import ParticlesBg from 'particles-bg';
+import AuthContext from "../../Context/AuthContext";
 
 export default function Login() {
   const [email, setEmail] = useState(""); 
   const [password, setPassword] = useState(""); 
+  const{getLoggedIn} = useContext(AuthContext);
 
+  const history = useHistory();
   async function login(e){
     e.preventDefault();
 
@@ -14,17 +19,20 @@ export default function Login() {
         email, password, 
       };
       await axios.post("http://localhost:5000/auth/login", loginData); //posts on server
+      await getLoggedIn();
+      history.push("/inventory");
     }catch(err){
       console.error(err);
     }
   }
   // render() {
     return (
-        <div>
-         <h1>
+      <div>
+        <div className = "login-container">
+         <h1 className = "login-text">
            Login Now! 
          </h1>
-         <form onSubmit ={login}>
+         <form className = "form" onSubmit ={login}>
            <input 
            type = "email" 
            placeholder = "Email"  
@@ -41,8 +49,11 @@ export default function Login() {
            <br/>
            <button type = "submit"> Login </button>
          </form>
-         {/* add code for Login design here */}
         </div>
+         
+         <ParticlesBg num={100} type="fountain" bg={true} />
+
+         </div>
     );
   // }
 }
