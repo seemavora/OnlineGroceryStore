@@ -1,34 +1,37 @@
 import React, { Component } from 'react';
-import { Box, Container, Grid, Typography } from '@material-ui/core';
+import { Box, Container, Grid, Typography, styled } from '@material-ui/core';
 import Options from './Options';
 import BottomSections from './BottomSections';
 import Navbar from '../../Components/Navbar/Navbar'
+const BackgroundBox = styled(Box)({
+  backgroundImage: "url(/images/lettuce.png)",
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "center center",
+  backgroundSize:"cover",
+  backgroundAttachment:"fixed",
+  height:"px",
+  width:"100%",
+});
+
 class Homepage extends Component {
   render() {
     return (
       <Container fluid>
         <Navbar/>
         {/* Header section */}
+       
         <Grid container justify="center">
-          <Grid item xs={12}>
-            {/* <Typography align="center" variant="h2">
-              Welcome to our Online Grocery Store
-            </Typography> */}
+          <BackgroundBox>
+          <Grid item xs={12} align="center">
+            <br></br>
+          <Img
+                round
+                src="/images/LemonLite_Bites.png"
+              ></Img>
           </Grid>
+          <br></br>
+          </BackgroundBox>
           <Grid item xs={12} md={6}>
-            {/* <Typography align="center" variant="p">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </Typography> */}
-            <br />
-            <br />
-            <Img src="/images/LemonLite_Bites.png"/>
-            <Img src="/images/lettuce.png"/>
           </Grid>
         </Grid>
         <br />
@@ -85,8 +88,9 @@ const Img = ({ src, round, rounded, ...rest }) => (
   <img
     style={{
       height: 'auto',
-      width: '100%',
+      width: '40%',
       borderRadius: rounded ? '5%' : round ? '50%' : '0%',
+      
     }}
     {...rest}
     src={src}

@@ -2,3 +2,7 @@ ul {
     display:table;
     margin: 0 auto;
 }
+
+.title{
+    font-size: 30px;
+}
