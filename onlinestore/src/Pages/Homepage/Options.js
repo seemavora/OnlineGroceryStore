@@ -3,6 +3,8 @@ import { Box, Grid, Typography } from '@material-ui/core';
 import { makeStyles, styled } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Modal from '@material-ui/core/Modal';
+import Fade from '@material-ui/core/Fade';
+import Backdrop from '@material-ui/core/Backdrop';
 
 const images = [
   {
@@ -10,7 +12,7 @@ const images = [
       'https://images.immediate.co.uk/production/volatile/sites/2/2016/08/25471.jpg?quality=90&resize=620,413',
     title: 'Vegan',
     body:
-      'Vegan Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      'Vegan Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt',
     width: '45%',
   },
   {
@@ -117,6 +119,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    height: 'px',
+    width: '100%',
   },
 }));
 
@@ -149,12 +153,12 @@ function CoolButtons() {
 
   /*stylish box small is for the tiny popups*/
   const StylishBoxSmall = styled(Box)({
-    background: 'linear-gradient(45deg, #228b22 20%, #006400 90%)',
+    background: 'linear-gradient(45deg, #ABB94F 20%, #006400 90%)',
     border: 0,
     borderRadius: 3,
     boxShadow: '0 3px 5px 2px rgba(165, 188, 163, .3)',
     color: 'white',
-    width: 'auto',
+    width: '300px',
     height: 'auto',
     padding: '0 30px',
     margin: '0 auto',
@@ -204,13 +208,20 @@ function CoolButtons() {
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
           className={classes.modal}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+          }}
         >
-          <StylishBoxSmall>
-            <div>
-              <h2 id="transition-modal-title">{images[option]?.title}</h2>
-              <p id="transition-modal-description">{images[option]?.body}</p>
-            </div>
-          </StylishBoxSmall>
+          <Fade in={open}>
+            <StylishBoxSmall>
+              <div>
+                <h2 id="transition-modal-title">{images[option]?.title}</h2>
+                <p id="transition-modal-description">{images[option]?.body}</p>
+              </div>
+            </StylishBoxSmall>
+          </Fade>
         </Modal>
       </div>
     </StylishBox>
