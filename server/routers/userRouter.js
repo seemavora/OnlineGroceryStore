@@ -87,7 +87,7 @@ router.get("/logout", (req, res) =>{
 });
 
 //checks if user is loggedin
-router.get("loggedIn", (rez, res) =>{
+router.get("/loggedIn", (req, res) =>{
   try{
     //trying to read cookie from request (See if authorized)
     const token = req.cookies.token; //object to store cookies

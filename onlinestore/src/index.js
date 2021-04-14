@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Routing from './Routes'
+import Router from './Routes'
 import './index.css';
 import axios from "axios";
 import { AuthContextProvider } from './Context/AuthContext';
@@ -19,7 +19,7 @@ axios.defaults.withCredentials = true;
 function App() {
   return (
     <AuthContextProvider>
-      <Routing />
+      <Router />
     </AuthContextProvider>
   );
 }

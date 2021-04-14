@@ -1,11 +1,17 @@
-import React, {useState } from "react";
+import React, {useState, useContext } from "react";
+import {useHistory } from "react-router-dom";
 import axios from "axios";
 import './Login.css';
+import ParticlesBg from 'particles-bg';
+import AuthContext from "../../Context/AuthContext";
+import Button from '@material-ui/core/Button';
 
 export default function Login() {
   const [email, setEmail] = useState(""); 
   const [password, setPassword] = useState(""); 
+  const{getLoggedIn} = useContext(AuthContext);
 
+  const history = useHistory();
   async function login(e){
     e.preventDefault();
 
@@ -14,17 +20,20 @@ export default function Login() {
         email, password, 
       };
       await axios.post("http://localhost:5000/auth/login", loginData); //posts on server
+      await getLoggedIn();
+      history.push("/inventory");
     }catch(err){
       console.error(err);
     }
   }
   // render() {
     return (
-        <div>
-         <h1>
+      <div>
+        <div className = "login-container">
+         <h1 className = "login-text">
            Login Now! 
          </h1>
-         <form onSubmit ={login}>
+         <form className = "form" onSubmit ={login}>
            <input 
            type = "email" 
            placeholder = "Email"  
@@ -39,10 +48,16 @@ export default function Login() {
            value = {password}/>
            <br/>
            <br/>
-           <button type = "submit"> Login </button>
+           <Button type = "submit" variant="contained" classes={{ label: 'button-basics' }} > Login </Button>
+           <br/>
+           <br/>
          </form>
-         {/* add code for Login design here */}
         </div>
+         
+         <ParticlesBg num={100} type="square" bg={true}color = '#FFFFFF' />
+  
+
+         </div>
     );
   // }
 }
