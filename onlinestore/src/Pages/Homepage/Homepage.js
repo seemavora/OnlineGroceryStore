@@ -2,37 +2,32 @@ import React, { Component } from 'react';
 import { Box, Container, Grid, Typography, styled } from '@material-ui/core';
 import Options from './Options';
 import BottomSections from './BottomSections';
-import Navbar from '../../Components/Navbar/Navbar'
+import Navbar from '../../Components/Navbar/Navbar';
 const BackgroundBox = styled(Box)({
-  backgroundImage: "url(/images/lettuce.png)",
-  backgroundRepeat: "no-repeat",
-  backgroundPosition: "center center",
-  backgroundSize:"cover",
-  backgroundAttachment:"fixed",
-  height:"px",
-  width:"100%",
+  backgroundImage: 'url(/images/lettuce.png)',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center center',
+  backgroundSize: 'cover',
+  backgroundAttachment: 'fixed',
+  height: 'px',
+  width: '100%',
 });
 
 class Homepage extends Component {
   render() {
     return (
       <Container fluid>
-        <Navbar/>
+        <Navbar />
         {/* Header section */}
-       
         <Grid container justify="center">
-          <BackgroundBox>
-          <Grid item xs={12} align="center">
+          <BackgroundBox rounded>
+            <Grid item xs={12} align="center">
+              <br></br>
+              <Img round src="/images/LemonLite_Bites.png"></Img>
+            </Grid>
             <br></br>
-          <Img
-                round
-                src="/images/LemonLite_Bites.png"
-              ></Img>
-          </Grid>
-          <br></br>
           </BackgroundBox>
-          <Grid item xs={12} md={6}>
-          </Grid>
+          <Grid item xs={12} md={6}></Grid>
         </Grid>
         <br />
         <br />
@@ -90,7 +85,6 @@ const Img = ({ src, round, rounded, ...rest }) => (
       height: 'auto',
       width: '40%',
       borderRadius: rounded ? '5%' : round ? '50%' : '0%',
-      
     }}
     {...rest}
     src={src}
