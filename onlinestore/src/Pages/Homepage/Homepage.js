@@ -23,12 +23,12 @@ class Homepage extends Component {
         {/* Header section */}
         <Grid container justify="center">
           <Grid item xs={12}>
-            <Typography align="center" variant="h2">
+            {/* <Typography align="center" variant="h2">
               Welcome to our Online Grocery Store
-            </Typography>
+            </Typography> */}
           </Grid>
           <Grid item xs={12} md={6}>
-            <Typography align="center" variant="p">
+            {/* <Typography align="center" variant="p">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -36,15 +36,16 @@ class Homepage extends Component {
               reprehenderit in voluptate velit esse cillum dolore eu fugiat
               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
               sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </Typography>
+            </Typography> */}
             <br />
             <br />
-            <Img src="/images/Veggie_720x720.jpeg"/>
+            <Img src="/images/LemonLite_Bites.png"/>
+            <Img src="/images/lettuce.png"/>
           </Grid>
         </Grid>
         <br />
         <br />
-        <Grid container spacing={6}>
+        {/* <Grid container spacing={6}>
           <Grid item xs={12} md={4}>
             <Box>
               <Img
@@ -71,7 +72,7 @@ class Homepage extends Component {
           </Grid>
         </Grid>
         <br />
-        <br />
+        <br /> */}
         {/* Option section */}
         <Options />
         <br />
