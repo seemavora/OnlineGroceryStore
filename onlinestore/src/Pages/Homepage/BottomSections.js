@@ -5,9 +5,9 @@ import {styled} from '@material-ui/core/styles';
 import './Homepage.css'
  
 const StylishBox = styled(Box)({
-  background: 'linear-gradient(45deg, #2f503d 10%,#2f503d 90%, #abb94f 99%)',
+  background: 'linear-gradient(45deg, #2f503d 10%,#2f503d 90%, #abb94f 95%)',
   border: 0,
-  borderRadius: 70,
+  borderRadius: 50,
   boxShadow: '0 3px 5px 2px rgba(165, 188, 163, .3)',
   color: 'white',
   height: 'auto',
@@ -17,10 +17,10 @@ const StylishBox = styled(Box)({
 });
 
 const StylishButton = styled(Button)({
-  background: 'linear-gradient(45deg, #white 50%, #2f503d 50%)',
+  background: 'linear-gradient(45deg, #2f503d 50%, #2f503d 50%)',
   border: 0,
   boxShadow: '0 3px 5px 2px rgba(165, 188, 163, .3)',
-  color: '#2f503d',
+  color: 'white',
   height: 'auto',
   padding: '0 30px',
   margin: '16px auto',
