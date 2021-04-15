@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { Box, Grid, Typography, Divider, Paper, Table } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
-import {makeStyles} from '@material-ui/core/styles';
 import {styled} from '@material-ui/core/styles';
 import './Homepage.css'
  
 const StylishBox = styled(Box)({
-  background: 'linear-gradient(45deg, #2f503d 10%,#2f503d 90%, #abb94f 95%)',
+  background: 'linear-gradient(45deg, #2f503d 10%,#2f503d 90%, #abb94f 99%)',
   border: 0,
-  borderRadius: 50,
+  borderRadius: 70,
   boxShadow: '0 3px 5px 2px rgba(165, 188, 163, .3)',
   color: 'white',
   height: 'auto',
@@ -18,10 +17,10 @@ const StylishBox = styled(Box)({
 });
 
 const StylishButton = styled(Button)({
-  background: 'linear-gradient(45deg, #2f503d 50%, #2f503d 50%)',
+  background: 'linear-gradient(45deg, #white 50%, #2f503d 50%)',
   border: 0,
   boxShadow: '0 3px 5px 2px rgba(165, 188, 163, .3)',
-  color: 'white',
+  color: '#2f503d',
   height: 'auto',
   padding: '0 30px',
   margin: '16px auto',
@@ -43,10 +42,12 @@ function AboutUs() {
       </ul>
     <p> We work our hardest to make sure that all our food is GMO free and comes from sustainable sources so that you can be confident that you're getting only the best ingredients.</p>
 
-    <h3 className="title">Our Story</h3>
+    <h3 className="title" align="center">Our Story</h3>
     <p>Starting as a small, local grocery store in San Jose we realized that our customers didn't have a lot of time to spend
-    the aisles of a grocery store, especially in the high speed world of the Silicon Valley. </p>
-    <p>Our solution was an online storefront so our customers can browse our selection from the comfort of home and have their food delievered right to their doorsteps.</p>
+    the aisles of a grocery store, especially in the high speed world of the Silicon Valley.
+    Our solution was an online storefront so our customers can browse our selection from the comfort of home and have their food delievered right to their doorsteps.</p>
+    <br/>
+    
     <Divider/>
     </Box>
   </StylishBox>
@@ -59,7 +60,7 @@ export default class BottomSections extends Component {
         <Grid item xs={12}>
        
         <Box
-            color="#2f503d"
+            color="white"
             backgroundColor
            
           >
@@ -72,13 +73,13 @@ export default class BottomSections extends Component {
         
             <AboutUs/>
 
-        </Grid>
-        <Grid item xs = {12}>
         <Typography align="center">
-          <StylishButton href="https://www.google.com/webhp?authuser=2">
+          <StylishButton href="/signup">
                     Sign Up Now
           </StylishButton>
         </Typography>
+        </Grid>
+        <Grid item xs = {12}>
         </Grid>
       </Grid>
     );

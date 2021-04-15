@@ -1,20 +1,8 @@
-<<<<<<< HEAD
-import React, { Component } from "react";
-import "./Homepage.css";
-
-class Homepage extends Component {
-  render() {
-    return (
-      <div>
-        <h1>Homepage</h1>
-        {/* add code for Homepage design here */}
-      </div>
-=======
 import React, { Component } from 'react';
-import { Box, Container, Grid, Typography, styled } from '@material-ui/core';
+import { Box, Container, Grid, styled } from '@material-ui/core';
 import Options from './Options';
 import BottomSections from './BottomSections';
-import Navbar from '../../Components/Navbar/Navbar';
+
 const BackgroundBox = styled(Box)({
   backgroundImage: 'url(/images/lettuce.png)',
   backgroundRepeat: 'no-repeat',
@@ -29,7 +17,6 @@ class Homepage extends Component {
   render() {
     return (
       <Container fluid>
-        <Navbar />
         {/* Header section */}
         <Grid container justify="center">
           <BackgroundBox rounded>
@@ -43,34 +30,6 @@ class Homepage extends Component {
         </Grid>
         <br />
         <br />
-        {/* <Grid container spacing={6}>
-          <Grid item xs={12} md={4}>
-            <Box>
-              <Img
-                round
-                src="https://img.hellofresh.com/f_auto,fl_lossy,h_710,q_auto,w_710/hellofresh_website/us/cms/homepage/static_slider/W23_R12_2019_R90128A_MediterraneanMezzePlatter360x360.jpg"
-              ></Img>
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Box>
-              <Img
-                round
-                src="https://img.hellofresh.com/f_auto,fl_lossy,h_710,q_auto,w_710/hellofresh_website/us/cms/homepage/Recipe%20Slider/20min_720x720.jpg"
-              ></Img>
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Box>
-              <Img
-                round
-                src="https://img.hellofresh.com/f_auto,fl_lossy/hellofresh_website/us/cms/instagram/sixth_image.jpeg"
-              ></Img>
-            </Box>
-          </Grid>
-        </Grid>
-        <br />
-        <br /> */}
         {/* Option section */}
         <Options />
         <br />
@@ -78,7 +37,6 @@ class Homepage extends Component {
         {/* Bottom sections */}
         <BottomSections />
       </Container>
->>>>>>> added material UI
     );
   }
 }

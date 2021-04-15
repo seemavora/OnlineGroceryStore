@@ -12,7 +12,7 @@ const images = [
       'https://images.immediate.co.uk/production/volatile/sites/2/2016/08/25471.jpg?quality=90&resize=620,413',
     title: 'Vegan',
     body:
-      'Vegan Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt',
+      'We carry many products that support those that follow a vegan diet including oat milk, almond milk, cashew cheese, and much more! ',
     width: '45%',
   },
   {
@@ -20,7 +20,7 @@ const images = [
       'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimg1.cookinglight.timeinc.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F4_3_horizontal_-_1200x900%2Fpublic%2Fimage%2F2016%2F09%2Fmain%2F1610p34-white-bean-vegetable-bowls-frizzled-eggs-1.jpg%3Fitok%3Dp_bNHGNB&q=85',
     title: 'Vegetarian',
     body:
-      'Vegetarian Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      'Not only do we have offer our customers the freshest vegetables from local farms, but provide customers a variety of fresh and frozen vegetarian meals they can pick up! Healthy and all at a low price!',
     backgroundPosition: 'center',
     width: '45%',
   },
@@ -29,7 +29,7 @@ const images = [
       'https://www.petalumaseared.com/wp-content/uploads/2020/04/meattemp.jpg',
     title: 'Meat, Fish & Poultry',
     body:
-      'Meat, Fish & Poultry Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      'We believe in providing our users with fresh and ethically obtained meat. ',
     width: '45%',
   },
   {
@@ -37,7 +37,7 @@ const images = [
       'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/190430-cheesy-bacon-ranch-chicken-226-1556829090.jpg?crop=1.00xw:0.752xh;0,0.151xh&resize=980:*',
     title: 'Keto',
     body:
-      'Keto Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      'We offer our costumers all the necessary ingrediants that fit their keto needs, along with various frozen keto meals for easy prep!',
     width: '45%',
   },
 ];
