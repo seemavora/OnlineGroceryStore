@@ -5,6 +5,7 @@ import Inventory from './Pages/Inventory/Inventory';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/SignUp/SignUp';
 import Navbar from './Components/Navbar/Navbar';
+import Contact from './Pages/Contact/Contact';
 export default function Routes(props){
   const routes = [
     {
@@ -22,6 +23,10 @@ export default function Routes(props){
     {
       path:'/Inventory',
       component: Inventory
+    },
+    {
+      path:'/Contact',
+      component: Contact
     }
   ]
 
