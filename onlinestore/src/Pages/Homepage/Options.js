@@ -8,16 +8,14 @@ import Backdrop from '@material-ui/core/Backdrop';
 
 const images = [
   {
-    url:
-      'https://images.immediate.co.uk/production/volatile/sites/2/2016/08/25471.jpg?quality=90&resize=620,413',
+    url: '/images/vegan.jpeg',
     title: 'Vegan',
     body:
       'We carry many products that support those that follow a vegan diet including oat milk, almond milk, cashew cheese, and much more! ',
     width: '45%',
   },
   {
-    url:
-      'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimg1.cookinglight.timeinc.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F4_3_horizontal_-_1200x900%2Fpublic%2Fimage%2F2016%2F09%2Fmain%2F1610p34-white-bean-vegetable-bowls-frizzled-eggs-1.jpg%3Fitok%3Dp_bNHGNB&q=85',
+    url: '/images/vegetarian.png',
     title: 'Vegetarian',
     body:
       'Not only do we have offer our customers the freshest vegetables from local farms, but provide customers a variety of fresh and frozen vegetarian meals they can pick up! Healthy and all at a low price!',
@@ -25,16 +23,14 @@ const images = [
     width: '45%',
   },
   {
-    url:
-      'https://www.petalumaseared.com/wp-content/uploads/2020/04/meattemp.jpg',
+    url: '/images/meattemp.jpeg',
     title: 'Meat, Fish & Poultry',
     body:
       'We believe in providing our users with fresh and ethically obtained meat. ',
     width: '45%',
   },
   {
-    url:
-      'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/190430-cheesy-bacon-ranch-chicken-226-1556829090.jpg?crop=1.00xw:0.752xh;0,0.151xh&resize=980:*',
+    url: '/images/keto.jpeg',
     title: 'Keto',
     body:
       'We offer our costumers all the necessary ingrediants that fit their keto needs, along with various frozen keto meals for easy prep!',
