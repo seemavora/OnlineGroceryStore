@@ -1,9 +1,5 @@
-import React, { Component } from "react";
-import {
-  makeStyles,
-  createMuiTheme,
-  ThemeProvider
-} from "@material-ui/core/styles";
+import React, { useState }  from "react";
+import ReactDOM from 'react-dom'
 import './Inventory.css';
 import Button from "@material-ui/core/Button";
 
