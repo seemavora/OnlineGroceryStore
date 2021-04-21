@@ -50,15 +50,19 @@ class Contact extends Component {
             </Grid>
             <Grid item xs="6">
               <StyledBox>
+                <Divider></Divider>
                 <h2 align="center">Email Us</h2>
                 <p className="largeP"align="center">Email customer service at OFS_CS@ofs.com</p>
+                <Divider></Divider>
               </StyledBox>
             </Grid>
 
             <Grid item xs="6">
               <StyledBox>
+                <Divider></Divider>
                 <h2 align="center">Call Us</h2>
-                <p className="largeP" align="center">Call customer service at 1-800-OFS-FOOD (1-800-637-3663)</p>
+                <p className="largeP" align="center">Call customer service at 1-800-OFS-FOOD</p>
+                <Divider></Divider>
               </StyledBox>
             </Grid>
          </Grid>
