@@ -9,7 +9,7 @@ const BackgroundBox = styled(Box)({
   backgroundPosition: 'center center',
   backgroundSize: 'cover',
   backgroundAttachment: 'fixed',
-  height: 'px',
+  height: 'auto',
   width: '100%',
 });
 
