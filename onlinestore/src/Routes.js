@@ -10,20 +10,20 @@ import TransactionHistory from './Pages/TransactionHistory/TransactionHistory';
 export default function Routes(props){
   const routes = [
     {
-      path:'/',
-      component: Homepage
+      path: "/",
+      component: Homepage,
     },
     {
-      path:'/SignUp',
-      component: SignUp
+      path: "/SignUp",
+      component: SignUp,
     },
     {
-      path:'/Login',
-      component: Login
+      path: "/Login",
+      component: Login,
     },
     {
-      path:'/Inventory',
-      component: Inventory
+      path: "/Inventory",
+      component: Inventory,
     },
     {
       path:'/TransactionHistory',
@@ -37,13 +37,19 @@ export default function Routes(props){
 
   return (
     <Router>
-      <Navbar/>
-        <Switch>
-            {routes.map((route, index) => {
-                return <Route exact key={index}
-                    path={route.path} component={route.component} />
-            })}
-        </Switch>
+      <Navbar />
+      <Switch>
+        {routes.map((route, index) => {
+          return (
+            <Route
+              exact
+              key={index}
+              path={route.path}
+              component={route.component}
+            />
+          );
+        })}
+      </Switch>
     </Router>
-)
+  );
 }
