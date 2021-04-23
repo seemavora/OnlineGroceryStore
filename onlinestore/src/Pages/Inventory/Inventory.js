@@ -1,57 +1,98 @@
 import React, { useState }  from "react";
 import ReactDOM from 'react-dom'
 import './Inventory.css';
-import Button from "@material-ui/core/Button";
+import MaterialTable from 'material-table'
 
-class Inventory extends React.Component {
-  constructor(props) {
-     super(props)
-     this.state = {
-        items: [
-           { ID: 1, Product: 'Chicken Nuggets (20 piece)', Price: '$10.00', Quantity: 1,},
-           { ID: 2, Product: 'Broccoli', Price: '$2.00', Quantity: 5 },
-           { ID: 3, Product: 'Rice Bags', Price: '$10.00', Quantity: 23 },
-           { ID: 4, Product: 'Water Bottles', Price: '$3.00', Quantity: 47 }
-        ]
-     }
-  }
+const dataList = [
+   { id: 1, product: 'Chocolate', price: '$3.00', quantity: 30},
+   { id: 2, product: 'Chicken Nuggets', price: '$15.00', quantity: 40 },
+]
 
-  renderTableHeader() {
-     let header = Object.keys(this.state.items[0])
-     return header.map((key, index) => {
-        return <th key={index}>{key.toUpperCase()}</th>
-     })
-  }
+function Inventory(props) {
 
-  renderTableData() {
-     return this.state.items.map((item, index) => {
-        const { ID, Product, Price, Quantity, Edit, Delete } = item //destructuring
-        return (
-           <tr key={ID}>
-              <td>{ID}</td>
-              <td>{Product}</td>
-              <td>{Price}</td>
-              <td>{Quantity}</td>
-              <td>{Edit}</td>
-              <td>{Delete}</td>
-           </tr>
-        )
-     })
-  }
+   const [data, setData] = useState(dataList); 
 
-  render() {
-     return (
-        <div>
-           <h1 ID='title'>Admin Inventory Table</h1>
-           <table ID='items'>
-              <tbody>
-                 <tr>{this.renderTableHeader()}</tr>
-                 {this.renderTableData()}
-              </tbody>
-           </table>
-        </div>
-     )
-  }
-}
+   const columns = [       //[columns, setColumns] = useState
+     {
+       title: 'ID', field: 'id', type: 'numeric',
+     },
+     {  
+       title: 'Product', field: 'product',
+       editComponent: props => (
+         <input
+           type="text"
+           value={props.value}
+           onChange={e => props.onChange(e.target.value)}
+         />
+       )
+     },
+     { title: 'Price', field: 'price' },
+     { title: 'Quantity', field: 'quantity', type: 'numeric' },
+   ];
 
-export default Inventory;
+   return (
+     <MaterialTable
+       title="Admin Inventory Table"
+       columns={columns}
+       data={data}
+       options = {{
+         search: true,
+         paging: false,
+         filtering: false,
+         sorting: true,  
+       }}
+       editable={{
+         onRowAdd: newData =>
+           new Promise((resolve, reject) => {
+             setTimeout(() => {
+               setData([...data, newData]);
+               
+               resolve();
+             }, 1000)
+           }),
+
+      
+         onRowUpdate: (newData, oldData) =>
+           new Promise((resolve, reject) => {
+             setTimeout(() => {
+               const dataUpdate = [...data];
+               const index = oldData.tableData.id;
+               dataUpdate[index] = newData;
+               setData([...dataUpdate]);
+               resolve();
+             }, 1000)
+           }),
+
+         onRowDelete: oldData =>
+           new Promise((resolve, reject) => {
+             setTimeout(() => {
+               const dataDelete = [...data];
+               const index = oldData.tableData.id;
+               dataDelete.splice(index, 1);
+               setData([...dataDelete]);
+               resolve();
+             }, 1000)
+           }),
+       }}
+     />
+   )
+ }
+
+ export default Inventory;
+
+// import React, { Component } from 'react';
+// import MaterialTable from 'material-table'
+// import {Table} from './Table';
+
+
+
+// function Inventory(){
+//    return (
+//       <div className = "Inventory">
+//          <h2> React-Inventory</h2>
+//          <Table/>
+//       </div>
+//    )
+// }
+ 
+// export default Inventory;
