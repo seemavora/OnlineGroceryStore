@@ -16,6 +16,16 @@ function AuthContextProvider(props) {
     getLoggedIn();
   }, []);
 
+  async function getAdminLoggedIn() {
+    const adminloggedInRes = await axios.get("http://localhost:5000/auth/adminLoggedIn");
+
+    setLoggedIn(adminloggedInRes.data);
+  }
+
+  useEffect(() => {
+    getLoggedIn();
+  }, []);
+
   return (
     <AuthContext.Provider value={{ loggedIn, getLoggedIn }}>
       {props.children}
