@@ -37,10 +37,49 @@ router.post("/", async (req, res) => {
     const token = jwt.sign({admin: savedAdmin._id,}, process.env.JWT_SECRET);
     
     //sign cookie to send as a HTTP-only cookie
+    res.cookie("token", token,{
+      httpOnly:true,
+    }).send();
   }catch(err){
     console.error(err);
     res.status(500).send();
   }
+});
+router.post("/adminLogin", async(req, res) =>{
+  try{
+    const {email, password} = req.body;
+
+    // validate
+    if(!email || !password){
+      return res.status(400).json({errorMessage: "Please enter all required fields."});
+    }
+    const existingAdmin = await Admin.findOne({email});
+    if(!existingAdmin){
+      return res.status(401).json({errorMessage: "Wrong email or password."}); // 401 = unauthorized
+    }
+    const passwordCorrect = await bcrypt.compare(password, existingAdmin.passwordHash);
+    if(!passwordCorrect){
+      return res.status(401).json({errorMessage: "Wrong email or password."});
+    }
+
+ //log-in the admin
+ const token = jwt.sign({admin: existingAdmin._id,}, process.env.JWT_SECRET);
+    
+ //sign cookie to send as a HTTP-only cookie
+ res.cookie("token", token,{
+   httpOnly:true,
+ }).send();
+  }catch(err){
+    console.error(err);
+    res.status(500).send(); // 500 = internal server error
+  }
+});
+//logout user
+router.get("/adminLogout", (req, res) =>{
+  res.cookie("token","",{
+    httpOnly : true,
+    expires: new Date(0)
+  }).send();
 });
 
 module.exports = router;
