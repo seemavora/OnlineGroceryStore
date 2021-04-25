@@ -1,5 +1,8 @@
 const router = require("express").Router();
-const Admin = require("../models/adminModel")
+const Admin = require("../models/adminModel");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
 router.post("/", async (req, res) => {
   try{
     const {email, password, passwordVerify, adminCode} = req.body;
@@ -21,6 +24,19 @@ router.post("/", async (req, res) => {
     if (existingAdmin) {
       return res.status(400).json({ errorMessage: "Account with this email exists." }); //400 = bad request   
     }
+
+     // hashing the password
+    const salt = await bcrypt.genSalt(); //creates random string of numbers
+    const passwordHash = await bcrypt.hash(password,salt);
+
+    //save a new admin account to database
+    const newAdmin = new Admin({email, passwordHash});
+    const savedAdmin = await newAdmin.save();
+
+    //log-in the admin
+    const token = jwt.sign({admin: savedAdmin._id,}, process.env.JWT_SECRET);
+    
+    //sign cookie to send as a HTTP-only cookie
   }catch(err){
     console.error(err);
     res.status(500).send();
