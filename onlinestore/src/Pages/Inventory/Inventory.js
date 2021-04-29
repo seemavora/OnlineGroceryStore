@@ -4,8 +4,8 @@ import './Inventory.css';
 import MaterialTable from 'material-table'
 
 const dataList = [
-   { id: 1, product: 'Chocolate', price: '$3.00', quantity: 30},
-   { id: 2, product: 'Chicken Nuggets', price: '$15.00', quantity: 40 },
+   { id: 1, product: 'Chocolate', weight: '20 oz', price: '$3.00', quantity: 30},
+   { id: 2, product: 'Chicken Nuggets', weight: '3 lbs', price: '$15.00', quantity: 40 },
 ]
 
 function Inventory(props) {
@@ -26,7 +26,8 @@ function Inventory(props) {
          />
        )
      },
-     { title: 'Price', field: 'price' },
+     { title: 'Weight ', field: 'weight'},
+     { title: 'Price', field: 'price', type: 'currency'}, //figure out currency and how to implement it
      { title: 'Quantity', field: 'quantity', type: 'numeric' },
    ];
 
