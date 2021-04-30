@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Checkout from './Checkout';
 import { makeStyles, styled } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import { Grid, Box, Link } from '@material-ui/core';
+import { Grid, Box, Link, Button } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles((theme) => ({
@@ -95,6 +95,16 @@ function CardInfo() {
             fullWidth
             autoComplete="cc-cupon"
           />
+        </Grid>
+        <Grid>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick
+            className={classes.button}
+          >
+            next
+          </Button>
         </Grid>
       </Grid>
     </StylishBox>
