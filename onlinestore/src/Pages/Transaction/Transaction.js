@@ -9,7 +9,7 @@ export default class Transaction extends Component {
     return (
       <React.Fragment>
         <Typography variant="h6" gutterBottom>
-          Shipping address
+          Payment Method
         </Typography>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
