@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Checkout from './Checkout';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, styled } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
+import { Grid, Box, Link } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles((theme) => ({
@@ -17,10 +17,35 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function cardInfo() {
-  //const classes = useStyles();
+const StylishBox = styled(Box)({
+  background: 'linear-gradient(0.25turn, #dcedc8, #c5e1a5, #aed581)',
+  border: 0,
+  borderRadius: 5,
+  boxShadow: '0 3px 5px 2px rgba(165, 188, 163, .3)',
+  color: 'grey',
+  width: '100%',
+  height: 'auto',
+  padding: '0 30px',
+  margin: '0 auto',
+});
+
+function Copyright() {
   return (
-    <React.Fragment>
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://material-ui.com/">
+        OFS
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
+function CardInfo() {
+  const classes = useStyles();
+  return (
+    <StylishBox>
       <Typography variant="h6" gutterBottom>
         Payment Method
       </Typography>
@@ -72,7 +97,7 @@ function cardInfo() {
           />
         </Grid>
       </Grid>
-    </React.Fragment>
+    </StylishBox>
   );
 }
 
@@ -80,7 +105,10 @@ export default class Transaction extends Component {
   render() {
     return (
       <Grid container>
-        <cardInfo />
+        <CardInfo />
+        <Grid item xs={12}>
+          <Copyright />
+        </Grid>
       </Grid>
     );
   }
