@@ -23,10 +23,12 @@ const StylishBox = styled(Box)({
   borderRadius: 5,
   boxShadow: '0 3px 5px 2px rgba(165, 188, 163, .3)',
   color: 'grey',
-  width: '100%',
+  width: '50%',
   height: 'auto',
   padding: '0 30px',
-  margin: '0 auto',
+  marginTop: '50px',
+  marginLeft: 'auto',
+  marginRight: 'auto'
 });
 
 function Copyright() {
@@ -96,7 +98,7 @@ function CardInfo() {
             autoComplete="cc-cupon"
           />
         </Grid>
-        <Grid>
+        <Grid item xs={6}>
           <Button
             variant="contained"
             color="primary"
