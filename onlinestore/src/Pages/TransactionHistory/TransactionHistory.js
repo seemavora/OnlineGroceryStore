@@ -3,17 +3,20 @@ import './TransactionHistory.css';
 import MaterialTable from 'material-table'
 
 const dataList = [
-   { date:'5/10/21', product: 'Chocolate', weight: '3 oz', total: '$5.00'},
-   { date: '4/3/20', product: 'Chicken Nuggets', weight: '5 lbs', total: '$10.00'},
+   { id: 1, date:'5/10/21', product: 'Chocolate', weight: '3 oz', quantity: '5', total: '$5.00', date:'5/10/21'},
+   { id: 2, date: '4/3/20', product: 'Chicken Nuggets', weight: '5 lbs', quantity: '3', total: '$10.00'},
+   { id: 3, date: '4/3/20', product: 'Egg Rolls', weight: '5 oz', quantity: '7', total: '$3.00', parentId: 2},
+   { id: 4, date: '6/15/21',product: 'Burgers', weight: '2 lb', quantity: '1', total: '$5.50'},
+   { id: 5, date: '6/15/21',product: 'Fries', weight: '10 oz', quantity: '2', total: '$2.75', parentId:4},
 ]
 
 function TransactionHistory(props) {
-
+  
    const [data, setData] = useState(dataList); 
 
-   const columns = [       //[columns, setColumns] = useState
-     {
-       title: 'Date', field: 'date',
+   const columns = [ 
+    {
+      title: 'Date', field: 'date',
      },
      {  
        title: 'Product', field: 'product',
@@ -25,58 +28,27 @@ function TransactionHistory(props) {
          />
        )
      },
-     //{ title: 'Quantity', field: 'quantity', type: 'numeric' },
+     { title: 'Quantity', field: 'quantity'},
      { title: 'Weight', field: 'weight'},
-     { title: 'Total', field: 'total' },
-   ];
+     { title: 'Total', field: 'total',  },
 
+   ];
+   
    return (
      <MaterialTable
        title="Admin Transaction History Table"
        columns={columns}
        data={data}
+       parentChildData={(row, rows) => rows.find(a => a.id === row.parentId)}
        options = {{
          search: true,
          paging: false,
          filtering: false,
          sorting: true,  
+        //  selection:true,
        }}
-      //  editable={{
-      //    onRowAdd: newData =>
-      //      new Promise((resolve, reject) => {
-      //        setTimeout(() => {
-      //          setData([...data, newData]);
-               
-      //          resolve();
-      //        }, 1000)
-      //      }),
-
-      
-      //    onRowUpdate: (newData, oldData) =>
-      //      new Promise((resolve, reject) => {
-      //        setTimeout(() => {
-      //          const dataUpdate = [...data];
-      //          const index = oldData.tableData.id;
-      //          dataUpdate[index] = newData;
-      //          setData([...dataUpdate]);
-      //          resolve();
-      //        }, 1000)
-      //      }),
-
-      //    onRowDelete: oldData =>
-      //      new Promise((resolve, reject) => {
-      //        setTimeout(() => {
-      //          const dataDelete = [...data];
-      //          const index = oldData.tableData.id;
-      //          dataDelete.splice(index, 1);
-      //          setData([...dataDelete]);
-      //          resolve();
-      //        }, 1000)
-      //      }),
-      //  }}
      />
    )
  }
-
  export default TransactionHistory;
 
