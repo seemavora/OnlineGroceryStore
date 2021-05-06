@@ -2,8 +2,9 @@ const router = require("express").Router();
 const Admin = require("../models/adminModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const auth = require("../middleware/adminAuth");
 
-router.post("/", async (req, res) => {
+router.post("/", adminAuth, async (req, res) => {
   try{
     const {email, password, passwordVerify, adminCode} = req.body;
      //validation
