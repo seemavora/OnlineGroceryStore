@@ -3,7 +3,7 @@ const Admin = require("../models/adminModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-router.post("/",async (req, res) =>{
+router.post("/", async (req, res) =>{
 
   try{
     const {email, password, passwordVerify, accessCode } = req.body;
