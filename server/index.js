@@ -35,3 +35,4 @@ mongoose.connect(
 //set up routes by creating middle ware
 app.use("/auth", require("./routers/userRouter")); // app.use lets you run functions at certain paths
 app.use("/item", require("./routers/itemRouter"));
+app.use("/admin", require("./routers/adminRouter"));
