@@ -6,6 +6,7 @@ import Login from './Pages/Login/Login';
 import SignUp from './Pages/SignUp/SignUp';
 import Navbar from './Components/Navbar/Navbar';
 import Contact from './Pages/Contact/Contact';
+import Transaction from './Pages/Transaction/Transaction';
 export default function Routes(props){
   const routes = [
     {
@@ -27,6 +28,10 @@ export default function Routes(props){
     {
       path:'/Contact',
       component: Contact
+    },
+    {
+      path:'/Checkout',
+      component: Transaction
     }
   ]
 

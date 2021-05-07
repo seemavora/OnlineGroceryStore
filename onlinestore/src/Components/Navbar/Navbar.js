@@ -32,6 +32,9 @@ function Navbar() {
               <li>
                 <Link to="/contact">Contact</Link>
               </li>
+              <li>
+                <Link to="/checkout">Checkout</Link>
+              </li>
           </li>
           {loggedIn === false && (
             <>
