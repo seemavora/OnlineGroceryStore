@@ -8,6 +8,7 @@ import SignUp from "./Pages/SignUp/SignUp";
 import Navbar from "./Components/Navbar/Navbar";
 import Contact from "./Pages/Contact/Contact";
 import CartScreen from "./Pages/Cart/CartScreen";
+import TransactionHistory from "./Pages/TransactionHistory/TransactionHistory";
 export default function Routes(props) {
   const routes = [
     {
