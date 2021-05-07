@@ -27,7 +27,7 @@ function Inventory(props) {
        )
      },
      { title: 'Weight ', field: 'weight'},
-     { title: 'Price', field: 'price', type: 'currency'}, //figure out currency and how to implement it
+     { title: 'Price', field: 'price'}, 
      { title: 'Quantity', field: 'quantity', type: 'numeric' },
    ];
 
@@ -80,20 +80,3 @@ function Inventory(props) {
  }
 
  export default Inventory;
-
-// import React, { Component } from 'react';
-// import MaterialTable from 'material-table'
-// import {Table} from './Table';
-
-
-
-// function Inventory(){
-//    return (
-//       <div className = "Inventory">
-//          <h2> React-Inventory</h2>
-//          <Table/>
-//       </div>
-//    )
-// }
- 
-// export default Inventory;
