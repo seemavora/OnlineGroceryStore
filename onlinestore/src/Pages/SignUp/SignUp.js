@@ -24,10 +24,13 @@ export default function SignUp() {
       };
       await axios.post("http://localhost:5000/auth/", registerData); //posts on server
       await getLoggedIn();
+      await getAdmin();
       history.push("/inventory");
     } catch (err) {
       console.error(err);
     }
+
+    
   }
   // render() {
   return (
@@ -61,7 +64,7 @@ export default function SignUp() {
           <br />
           <input
             type="password"
-            placeholder="If Admin Type Admin Code, otherwise type:'no' "
+            placeholder="Enter AdminCode "
             onChange={(e) => setIsAdmin(e.target.value)}
             value={isAdmin}
           />

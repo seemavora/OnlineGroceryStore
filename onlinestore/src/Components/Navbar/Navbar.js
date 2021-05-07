@@ -10,7 +10,7 @@ import LogOutBtn from "../Buttons/LogOutBtn";
 function Navbar() {
 
   const [toggle, setToggle] = useState(false);
-  const { loggedIn } = useContext(AuthContext);
+  const { loggedIn, isAdmin } = useContext(AuthContext);
   const menuToggle = () => {
     setToggle(!toggle);
   };
@@ -43,10 +43,13 @@ function Navbar() {
               </li>
             </>
           )}
-          {loggedIn === true && (
+          {(loggedIn === true) && (isAdmin === true) && (
             <>
               <li>
-                <Link to="/inventory">Inventory</Link>
+                <Link to="/inventory">Groceries</Link>
+              </li>
+              <li>
+                <Link to="/cart">Cart</Link>
               </li>
               <li className="close" onClick={menuToggle}>
                 <img src={Close} alt="" width="20" />
