@@ -10,8 +10,10 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVerify, setPasswordVerify] = useState("");
+  const [isAdmin, setIsAdmin] = useState("");
 
-  const { getLoggedIn } = useContext(AuthContext);
+  const { getLoggedIn, getAdmin } = useContext(AuthContext);
+  
   const history = useHistory();
   async function register(e) {
     e.preventDefault();
@@ -54,6 +56,14 @@ export default function SignUp() {
             placeholder="Verify Your Password"
             onChange={(e) => setPasswordVerify(e.target.value)}
             value={passwordVerify}
+          />
+          <br />
+          <br />
+          <input
+            type="password"
+            placeholder="If Admin Type Admin Code, otherwise type:'no' "
+            onChange={(e) => setIsAdmin(e.target.value)}
+            value={isAdmin}
           />
           <br />
           <br />
