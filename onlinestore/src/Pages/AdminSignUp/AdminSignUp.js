@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import './SignUp.css';
-import AuthContext from "../../Context/AuthContext";
+import './AdminSignUp.css';
+import AdminAuthContext from "../../Context/AdminAuthContext";
 import Button from '@material-ui/core/Button';
 import ParticlesBg from 'particles-bg';
 
@@ -12,16 +12,16 @@ export default function AdminSignUp() {
   const [passwordVerify, setPasswordVerify] = useState("");
   const [accessCode, setAccessCode] = useState("");
 
-  const { getLoggedIn } = useContext(AuthContext);
+  const { getLoggedIn } = useContext(AdminAuthContext);
   const history = useHistory();
   async function register(e) {
     e.preventDefault();
 
     try {
       const registerData = {
-        email, password, passwordVerify,
+        email, password, passwordVerify,accessCode
       };
-      await axios.post("http://localhost:5000/auth/", registerData); //posts on server
+      await axios.post("http://localhost:5000/admin/", registerData); //posts on server
       await getLoggedIn();
       history.push("/inventory");
     } catch (err) {
@@ -53,12 +53,20 @@ export default function AdminSignUp() {
           <input
             type="password"
             placeholder="Verify Your Password"
-            onChange={(e) => setPasswordVerify(e.target.value)}
-            value={passwordVerify}
+            onChange={(e) => setAccessCode(e.target.value)}
+            value={accessCode}
           />
           <br />
           <br />
-          <Button type="submit" variant="contained" classes={{ label: 'button-basics' }}> Register </Button>
+          <input
+            type="password"
+            placeholder="Insert Admin Code"
+            onChange={(e) => setPasswordVerify(e.target.value)}
+            value={passwordVerify}
+          />
+          <br/>
+          <br/>
+          <Button type="submit" variant="contained" classes={{ label: 'button-basics' }}> Register as Admin </Button>
           <br />
           <br />
         </form>
