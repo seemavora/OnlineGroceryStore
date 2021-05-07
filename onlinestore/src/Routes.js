@@ -39,6 +39,10 @@ export default function Routes(props) {
       path: "/Cart",
       component: CartScreen,
     },
+    {
+      path: "/CustomerInventory",
+      component: CustomerInventory,
+    },
   ];
 
   return (
@@ -47,7 +51,7 @@ export default function Routes(props) {
       <Switch>
         {routes.map((route, index) => {
           return (
-            <Route
+            <Routes
               exact
               key={index}
               path={route.path}

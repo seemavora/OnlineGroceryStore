@@ -8,10 +8,10 @@ const jwt = require("jsonwebtoken");
 router.post("/", async (req, res) => {
 
   try {
-    const { email, password, passwordVerify } = req.body;
+    const { email, password, passwordVerify,adminID } = req.body;
 
     //validation
-    if (!email || !password || !passwordVerify) {
+    if (!email || !password || !passwordVerify || !adminID) {
       return res.status(400).json({ errorMessage: "Please enter all required fields." }); //400 = bad request
     }
     if (password.length < 6) {
@@ -103,4 +103,15 @@ router.get("/loggedIn", (req, res) =>{
   }
 });
 
+//checks if user is loggedin
+router.get("/isAdmin", async (req, res) =>{
+  try{  
+    const {adminID } = req.body;
+    const adminUser = await User.find({ isAdmin:"yes" });
+    console.log(adminUser);
+  }catch(err){
+    console.error(err);
+    res.status(200).json(false);
+  }
+});
 module.exports = router;
