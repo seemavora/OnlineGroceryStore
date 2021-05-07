@@ -4,6 +4,7 @@ import { makeStyles, styled } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { Grid, Box, Link, Button } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
+import AddressField from './Checkout'
 
 const useStyles = makeStyles((theme) => ({
   listItem: {
@@ -117,6 +118,7 @@ export default class Transaction extends Component {
   render() {
     return (
       <Grid container>
+        <AddressField/>
         <CardInfo />
         <Grid item xs={12}>
           <Copyright />
