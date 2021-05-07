@@ -87,9 +87,10 @@ function Routes() {
             <Route path="/login">
               <Login />
             </Route>
+          
           </>
         )}
-        {(loggedIn === true && isAdmin === false)&& (
+        {(loggedIn === true)&& (
           <>
             <Route path="/customerinventory">
               <CustomerInventory />

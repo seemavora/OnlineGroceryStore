@@ -1,4 +1,4 @@
-import React, {useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import Menu from "./svg/bars-solid.svg";
 import Close from "./svg/times-solid.svg";
 import CartIcon from "./svg/shopping-cart-solid.svg";
@@ -29,9 +29,9 @@ function Navbar() {
         <ul className={toggle ? "toggle" : ""}>
           <li>
             <Link to="/">Home</Link>
-              <li>
-                <Link to="/contact">Contact</Link>
-              </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
           </li>
           {loggedIn === false && (
             <>
@@ -43,10 +43,12 @@ function Navbar() {
               </li>
             </>
           )}
+
+
           {(loggedIn === true) && (isAdmin === true) && (
             <>
               <li>
-                <Link to="/inventory">Groceries</Link>
+                <Link to="/customerInventory">Groceries</Link>
               </li>
               <li>
                 <Link to="/cart">Cart</Link>
@@ -54,7 +56,7 @@ function Navbar() {
               <li className="close" onClick={menuToggle}>
                 <img src={Close} alt="" width="20" />
               </li>
-              <LogOutBtn/>
+              <LogOutBtn />
             </>
           )}
         </ul>

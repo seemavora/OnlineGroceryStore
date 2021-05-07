@@ -20,15 +20,17 @@ export default function SignUp() {
 
     try {
       const registerData = {
-        email, password, passwordVerify,
+        email, password, passwordVerify,isAdmin
       };
       await axios.post("http://localhost:5000/auth/", registerData); //posts on server
       await getLoggedIn();
-      await getAdmin();
-      history.push("/inventory");
+      // await getAdmin();
+      history.push("/");
     } catch (err) {
       console.error(err);
     }
+  
+  
 
     
   }
@@ -64,7 +66,7 @@ export default function SignUp() {
           <br />
           <input
             type="password"
-            placeholder="Enter AdminCode "
+            placeholder="Enter Admin Code "
             onChange={(e) => setIsAdmin(e.target.value)}
             value={isAdmin}
           />

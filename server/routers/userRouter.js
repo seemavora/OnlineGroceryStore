@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
     const passwordHash = await bcrypt.hash(password,salt);
 
     //save a new user account to database
-    const newUser = new User({email, passwordHash});
+    const newUser = new User({email, passwordHash, adminID});
     const savedUser = await newUser.save();
 
     //log-in the user
@@ -43,6 +43,7 @@ router.post("/", async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).send(); // 500 = internal server error
+    // res.status(500).json({errorMessage: "Here"});
   }
 
 });
@@ -104,11 +105,33 @@ router.get("/loggedIn", (req, res) =>{
 });
 
 //checks if user is loggedin
+
+
+router.get("/loggedIn", (req, res) =>{
+  try{
+    //trying to read cookie from request (See if authorized)
+    const token = req.cookies.token; //object to store cookies
+    // const checkID = req.User.adminID;
+    if(!token){
+      return res.status(200).json(false); //checks if user is logged in
+    }
+    jwt.verify(token, process.env.JWT_SECRET);//returns string/obj compares token to password, if token hasnt been created throw an error
+    res.send(true);
+
+  }catch(err){
+    console.error(err);
+    res.status(200).json(false);
+  }
+});
+
 router.get("/isAdmin", async (req, res) =>{
   try{  
     const {adminID } = req.body;
     const adminUser = await User.find({ isAdmin:"yes" });
-    console.log(adminUser);
+    if(adminUser){
+
+      res.status(200).json(true);
+    }
   }catch(err){
     console.error(err);
     res.status(200).json(false);
