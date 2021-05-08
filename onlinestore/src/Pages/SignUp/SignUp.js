@@ -10,10 +10,8 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVerify, setPasswordVerify] = useState("");
-  const [isAdmin, setIsAdmin] = useState("");
 
-  const { getLoggedIn, getAdmin } = useContext(AuthContext);
-  
+  const { getLoggedIn } = useContext(AuthContext);
   const history = useHistory();
   async function register(e) {
     e.preventDefault();
@@ -32,49 +30,55 @@ export default function SignUp() {
   // render() {
   return (
     <div>
-      <div className="signup-container">
-        <h1 className="signup-text">
-          Register Now!
-         </h1>
-        <form onSubmit={register}>
-          <input
-            type="email"
-            placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-          />
-          <br />
-          <br />
-          <input type="password"
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password} />
-          <br />
-          <br />
-          <input
-            type="password"
-            placeholder="Verify Your Password"
-            onChange={(e) => setPasswordVerify(e.target.value)}
-            value={passwordVerify}
-          />
-          <br />
-          <br />
-          <input
-            type="password"
-            placeholder="If Admin Type Admin Code, otherwise type:'no' "
-            onChange={(e) => setIsAdmin(e.target.value)}
-            value={isAdmin}
-          />
-          <br />
-          <br />
-          <Button type="submit" variant="contained" classes={{ label: 'button-basics' }}> Register </Button>
-          <br />
-          <br />
-        </form>
-      </div>
       <ParticlesBg num={100} type="square" bg={true} color='#FFFFFF' />
+      <div>
+        <div className="signup-container">
+          <h1 className="signup-text">
+            Register Now!
+         </h1>
+          <form onSubmit={register}>
+            <input
+              type="email"
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+            />
+            <br />
+            <br />
+            <input type="password"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password} />
+            <br />
+            <br />
+            <input
+              type="password"
+              placeholder="Verify Your Password"
+              onChange={(e) => setPasswordVerify(e.target.value)}
+              value={passwordVerify}
+            />
+            <br />
+            <br />
+            <Button type="submit" variant="contained" classes={{ label: 'button-basics' }}> Register </Button>
+            <br />
+            <br />
+          </form>
+          <br />
+          <br />
+        </div>
+        <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+      </div>
+     
     </div>
   );
   // }
 }
-
