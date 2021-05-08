@@ -39,6 +39,10 @@ export default function Routes(props) {
       path: "/Cart",
       component: CartScreen,
     },
+    {
+      path: "/CustomerInventory",
+      component: CustomerInventory
+    },
   ];
 
   return (

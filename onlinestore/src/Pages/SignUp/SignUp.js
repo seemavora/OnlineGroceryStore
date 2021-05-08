@@ -10,18 +10,20 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVerify, setPasswordVerify] = useState("");
+  const [isAdmin, setIsAdmin] = useState("");
 
-  const { getLoggedIn } = useContext(AuthContext);
+  const { getLoggedIn, getAdmin } = useContext(AuthContext);
   const history = useHistory();
   async function register(e) {
     e.preventDefault();
 
     try {
       const registerData = {
-        email, password, passwordVerify,
+        email, password, passwordVerify,isAdmin
       };
       await axios.post("http://localhost:5000/auth/", registerData); //posts on server
-      await getLoggedIn();
+      // await getLoggedIn();
+      await getAdmin();
       history.push("/inventory");
     } catch (err) {
       console.error(err);
@@ -59,6 +61,15 @@ export default function SignUp() {
             />
             <br />
             <br />
+            <input
+              type="password"
+              placeholder="AdminKey"
+              onChange={(e) => setIsAdmin(e.target.value)}
+              value={isAdmin}
+            />
+            <br />
+            <br />
+            
             <Button type="submit" variant="contained" classes={{ label: 'button-basics' }}> Register </Button>
             <br />
             <br />

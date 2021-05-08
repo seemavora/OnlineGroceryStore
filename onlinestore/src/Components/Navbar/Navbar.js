@@ -1,4 +1,4 @@
-import React, {useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import Menu from "./svg/bars-solid.svg";
 import Close from "./svg/times-solid.svg";
 import CartIcon from "./svg/shopping-cart-solid.svg";
@@ -10,7 +10,7 @@ import LogOutBtn from "../Buttons/LogOutBtn";
 function Navbar() {
 
   const [toggle, setToggle] = useState(false);
-  const { loggedIn } = useContext(AuthContext);
+  const { loggedIn, isAdmin } = useContext(AuthContext);
   const menuToggle = () => {
     setToggle(!toggle);
   };
@@ -29,9 +29,9 @@ function Navbar() {
         <ul className={toggle ? "toggle" : ""}>
           <li>
             <Link to="/">Home</Link>
-              <li>
-                <Link to="/contact">Contact</Link>
-              </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
           </li>
           {loggedIn === false && (
             <>
@@ -43,17 +43,37 @@ function Navbar() {
               </li>
             </>
           )}
-          {loggedIn === true && (
+
+
+          {(loggedIn === true) && (isAdmin === false) && (
+            <>
+              <li>
+                <Link to="/CustomerInventory">Groceries</Link>
+              </li>
+              <li>
+                <Link to="/cart">Cart</Link>
+              </li>
+              <li className="close" onClick={menuToggle}>
+                <img src={Close} alt="" width="20" />
+                <LogOutBtn />
+              </li>
+            </>
+          )}
+
+          {(loggedIn === true && (isAdmin === false))&& (
             <>
               <li>
                 <Link to="/inventory">Inventory</Link>
               </li>
+              <li>
+                <Link to="/TransactionHistory">Transactions</Link>
+              </li>
               <li className="close" onClick={menuToggle}>
                 <img src={Close} alt="" width="20" />
               </li>
-              <LogOutBtn/>
             </>
           )}
+          <LogOutBtn />
         </ul>
         <div className="nav-cart">
           <span>0</span>
@@ -65,7 +85,6 @@ function Navbar() {
     </header>
   );
 }
-
 
 
 export default Navbar;

@@ -21,7 +21,7 @@ export default function Login() {
       };
       await axios.post("http://localhost:5000/auth/login", loginData); //posts on server
       await getLoggedIn();
-      history.push("/inventory");
+      history.push("/");
     }catch(err){
       console.error(err);
     }
