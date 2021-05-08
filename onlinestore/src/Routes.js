@@ -28,6 +28,10 @@ export default function Routes(props) {
       component: Inventory,
     },
     {
+      path:'/CustomerInventory',
+      component: CustomerInventory
+    },
+    {
       path:'/TransactionHistory',
       component: TransactionHistory
     },
