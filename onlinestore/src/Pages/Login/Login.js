@@ -9,7 +9,8 @@ import Button from '@material-ui/core/Button';
 export default function Login() {
   const [email, setEmail] = useState(""); 
   const [password, setPassword] = useState(""); 
-  const{getLoggedIn} = useContext(AuthContext);
+  const [isAdmin, setIsAdmin] = useState(""); 
+  const{getLoggedIn, getIsAdmin} = useContext(AuthContext);
 
   const history = useHistory();
   async function login(e){
@@ -17,11 +18,14 @@ export default function Login() {
 
     try{
       const loginData = {
-        email, password, 
+        email, password, isAdmin
       };
       await axios.post("http://localhost:5000/auth/login", loginData); //posts on server
       await getLoggedIn();
-      history.push("/inventory");
+      localStorage.setItem("email", email);
+      // await axios.post("http://localhost:5000/auth/isAdmin", loginData); 
+      // await getIsAdmin();
+      history.push("/");
     }catch(err){
       console.error(err);
     }
@@ -53,7 +57,22 @@ export default function Login() {
            <br/>
          </form>
         </div>
-         
+        <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
          <ParticlesBg num={100} type="square" bg={true}color = '#FFFFFF' />
   
 
