@@ -10,11 +10,13 @@ import LogOutBtn from "../Buttons/LogOutBtn";
 function Navbar() {
 
   const [toggle, setToggle] = useState(false);
-  const { loggedIn, isAdmin } = useContext(AuthContext);
+  const { loggedIn, isAdmin } = useContext(AuthContext); // check to see if loggedIn/isAdmin are fields (change to lets)
+  // const checkContext = useContext(AuthContext);
+ // 
   const menuToggle = () => {
     setToggle(!toggle);
   };
-
+  // console.log(checkContext);
   return (
     <header>
       <div className="menu" onClick={menuToggle}>
@@ -43,37 +45,41 @@ function Navbar() {
               </li>
             </>
           )}
-
-
-          {(loggedIn === true) && (isAdmin === false) && (
+          {loggedIn === true && (
             <>
-              <li>
-                <Link to="/CustomerInventory">Groceries</Link>
-              </li>
-              <li>
-                <Link to="/cart">Cart</Link>
-              </li>
-              <li className="close" onClick={menuToggle}>
-                <img src={Close} alt="" width="20" />
-                <LogOutBtn />
-              </li>
+              {(isAdmin === 0) && (
+                <>
+                  <li>
+                    <Link to="/CustomerInventory">Groceries</Link>
+                  </li>
+                  <li>
+                    <Link to="/cart">Cart</Link>
+                  </li>
+                  <li className="close" onClick={menuToggle}>
+                    <img src={Close} alt="" width="20" />
+                    {/* <LogOutBtn /> */}
+                  </li>
+                </>
+              )}
+
+              {(isAdmin === 1) && (
+                <>
+                  <li>
+                    <Link to="/inventory">Inventory</Link>
+                  </li>
+                  <li>
+                    <Link to="/TransactionHistory">Transactions</Link>
+                  </li>
+                  <li className="close" onClick={menuToggle}>
+                    <img src={Close} alt="" width="20" />
+                  </li>
+                </>
+
+              )}
+              <LogOutBtn />
             </>
           )}
 
-          {(loggedIn === true && (isAdmin === false))&& (
-            <>
-              <li>
-                <Link to="/inventory">Inventory</Link>
-              </li>
-              <li>
-                <Link to="/TransactionHistory">Transactions</Link>
-              </li>
-              <li className="close" onClick={menuToggle}>
-                <img src={Close} alt="" width="20" />
-              </li>
-            </>
-          )}
-          <LogOutBtn />
         </ul>
         <div className="nav-cart">
           <span>0</span>

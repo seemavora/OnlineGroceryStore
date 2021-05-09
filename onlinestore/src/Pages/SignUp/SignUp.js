@@ -12,7 +12,7 @@ export default function SignUp() {
   const [passwordVerify, setPasswordVerify] = useState("");
   const [isAdmin, setIsAdmin] = useState("");
 
-  const { getLoggedIn, getAdmin } = useContext(AuthContext);
+  const { getLoggedIn, getIsAdmin } = useContext(AuthContext);
   const history = useHistory();
   async function register(e) {
     e.preventDefault();
@@ -22,9 +22,11 @@ export default function SignUp() {
         email, password, passwordVerify,isAdmin
       };
       await axios.post("http://localhost:5000/auth/", registerData); //posts on server
-      // await getLoggedIn();
-      await getAdmin();
-      history.push("/inventory");
+      localStorage.setItem("email", email);
+      await getLoggedIn();
+      // await axios.post("http://localhost:5000/auth/isAdmin", registerData); 
+      // await getIsAdmin();
+      history.push("/");
     } catch (err) {
       console.error(err);
     }
