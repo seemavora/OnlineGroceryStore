@@ -22,13 +22,22 @@ section .cart {
   cursor: pointer;
   font-weight: 900;
 }
-.total {
+.priceTotal {
   width: 100%;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
+.weightTotal {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: right;
+  justify-content: space-between;
+}
+
 .total a {
   text-decoration: none;
   background: #333;

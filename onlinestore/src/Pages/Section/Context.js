@@ -7,62 +7,69 @@ export class DataProvider extends Component {
     products: [
       {
         _id: "1",
-        title: "Product 1",
-        src: "./images/4.png",
-        description: "This is a description",
+        title: "Fresh Chicken Thighs",
+        src: "../images/4.png",
+        description: "Pilgrim's Boneless Fresh Chicken Thighs", 
         content:
           "Howdy, this is random text to see if it will go off the page, ",
         price: 23,
+        weight: 1.8, //lbs
         count: 1,
       },
       {
         _id: "2",
-        title: "Product 2",
-        src: "./images/5.png",
-        description: "I am Larry",
+        title: "Chicken & Vegetable Stir Fry",
+        src: "../images/5.png",
+        description: "Healthy Choice Chicken & Vegetable Stir Fry",
         content: "Howdy, this is random text to see if it will go off the page",
-        price: 30,
+        price: 5.50,
+        weight: 0.57, //lbs
         count: 1,
       },
       {
         _id: "3",
-        title: "Product 3",
-        src: "./images/6.png",
-        description: "This is bread",
-        content: "Howdy",
+        title: "100% Whole Grain Bread",
+        src: "../images/6.png",
+        description: "Nature's Own 100% Whole Grain",
+        content: "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
         price: 23,
+        weight: 1.25, //lbs
         count: 1,
       },
       {
         _id: "4",
-        title: "Product 4",
-        src: "./images/4.png",
-        description: "This is a description",
-        content: "Howdy",
+        title: "Fresh Chicken Thighs",
+        src: "../images/4.png",
+        description: "Pilgrim's Boneless Fresh Chicken Thighs",
+        content: "------------------------------------------------------------------",
         price: 23,
+        weight: 1.8, //lbs
         count: 1,
       },
       {
         _id: "5",
-        title: "Product 5",
-        src: "./images/5.png",
-        description: "I am Larry",
-        content: "Howdy",
+        title: "Chicken & Vegetable Stir Fry",
+        src: "../images/5.png",
+        description: "Healthy Choice Chicken & Vegetable Stir Fry",
+        content: "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
         price: 30,
+        weight: 0.57, //lbs
         count: 1,
       },
       {
         _id: "6",
-        title: "Product 6",
-        src: "./images/6.png",
-        description: "This is a description",
-        content: "Howdy",
+        title: "100% Whole Grain Bread",
+        src: "../images/6.png",
+        description: "Nature's Own 100% Whole Grain",
+        content: "------------------------------------------------------------------",
         price: 23,
+        weight: 1.25, //lbs
         count: 1,
       },
     ],
     cart: [],
-    total: 0,
+    priceTotal: 0,
+    weightTotal: 0,
   };
 
   addCart = (id) => {
@@ -88,8 +95,9 @@ export class DataProvider extends Component {
       }
     });
     this.setState({ cart: cart });
-    this.getTotal();
+    this.getPriceTotal();
   };
+
   increase = (id) => {
     const { cart } = this.state;
     cart.forEach((item) => {
@@ -98,7 +106,7 @@ export class DataProvider extends Component {
       }
     });
     this.setState({ cart: cart });
-    this.getTotal();
+    this.getPriceTotal();
   };
 
   removeProduct = (id) => {
@@ -110,16 +118,24 @@ export class DataProvider extends Component {
         }
       });
       this.setState({ cart: cart });
-      this.getTotal();
+      this.getPriceTotal();
     }
   };
 
-  getTotal = () => {
+  getPriceTotal = () => {
     const { cart } = this.state;
     const res = cart.reduce((prev, item) => {
       return prev + item.price * item.count;
     }, 0);
-    this.setState({ total: res });
+    this.setState({ priceTotal: res });
+  };
+
+  getWeightTotal = () => {
+    const { cart } = this.state;
+    const res = cart.reduce((prev, item) => {
+      return prev + item.weight * item.count;
+    }, 0);
+    this.setState({ weightTotal: res });
   };
 
   componentDidUpdate() {
@@ -139,9 +155,9 @@ export class DataProvider extends Component {
   }
 
   render() {
-    const { products, cart, total } = this.state;
+    const { products, cart, priceTotal, weightTotal} = this.state; 
 
-    const { addCart, reduction, increase, removeProduct, getTotal } = this;
+    const { addCart, reduction, increase, removeProduct, getPriceTotal, getWeightTotal} = this;
     return (
       <DataContext.Provider
         value={{
@@ -151,8 +167,10 @@ export class DataProvider extends Component {
           reduction,
           increase,
           removeProduct,
-          total,
-          getTotal,
+          priceTotal,
+          weightTotal,
+          getPriceTotal,
+          getWeightTotal,
         }}
       >
         {this.props.children}
