@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import product_card from "../CustomerInventory/product_data";
 import ReactCardFlip from 'react-card-flip';
 
+
 const MainContent = () => {
   console.log(product_card);
   const listItems = product_card.map((item) => (
