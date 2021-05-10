@@ -7,6 +7,7 @@ import SignUp from './Pages/SignUp/SignUp';
 import Navbar from './Components/Navbar/Navbar';
 import Contact from './Pages/Contact/Contact';
 import Transaction from './Pages/Transaction/Transaction';
+import Confirmation from './Pages/Transaction/Confirmation';
 export default function Routes(props){
   const routes = [
     {
@@ -32,6 +33,10 @@ export default function Routes(props){
     {
       path:'/Checkout',
       component: Transaction
+    },
+    {
+      path:'/Confirmation',
+      component: Confirmation
     }
   ]
 

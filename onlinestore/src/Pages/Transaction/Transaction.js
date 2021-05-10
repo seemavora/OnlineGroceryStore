@@ -2,9 +2,16 @@ import React, { Component } from 'react';
 import Checkout from './Checkout';
 import { makeStyles, styled } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import { Grid, Box, Link, Button } from '@material-ui/core';
+import {
+  Grid,
+  Box,
+  Link,
+  Button,
+  Checkbox,
+  FormControlLabel,
+} from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
-import AddressField from './Checkout'
+import AddressField from './Checkout';
 
 const useStyles = makeStyles((theme) => ({
   listItem: {
@@ -16,10 +23,25 @@ const useStyles = makeStyles((theme) => ({
   title: {
     marginTop: theme.spacing(2),
   },
+  button: {
+    marginTop: theme.spacing(3),
+    marginLeft: theme.spacing(1),
+  },
 }));
 
+const BackgroundBox = styled(Box)({
+  //backgroundImage: 'url(/images/lettuce.png)',
+  //background: 'linear-gradient(0.25turn, #dcedc8, #c5e1a5, #aed581)',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center center',
+  backgroundSize: 'cover',
+  backgroundAttachment: 'fixed',
+  height: 'auto',
+  width: '100%',
+});
+
 const StylishBox = styled(Box)({
-  background: 'linear-gradient(0.25turn, #dcedc8, #c5e1a5, #aed581)',
+  //background: 'linear-gradient(0.25turn, #dcedc8, #c5e1a5, #aed581)',
   border: 0,
   borderRadius: 5,
   boxShadow: '0 3px 5px 2px rgba(165, 188, 163, .3)',
@@ -29,8 +51,12 @@ const StylishBox = styled(Box)({
   padding: '0 30px',
   marginTop: '50px',
   marginLeft: 'auto',
-  marginRight: 'auto'
+  marginRight: 'auto',
 });
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
 function Copyright() {
   return (
@@ -49,7 +75,7 @@ function CardInfo() {
   const classes = useStyles();
   return (
     <StylishBox>
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h6">
         Payment Method
       </Typography>
       <Grid container spacing={3}>
@@ -59,16 +85,16 @@ function CardInfo() {
             id="cardName"
             label="Name on card"
             fullWidth
-            autoComplete="cc-name"
+            autoComplete="name"
           />
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
             required
-            id="cardName"
-            label="Card Number"
+            id="cardNumber"
+            label="Card number"
             fullWidth
-            autoComplete="cc-number"
+            autoComplete="number"
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -85,7 +111,7 @@ function CardInfo() {
           <TextField
             required
             id="expDate"
-            label="Expiry Date"
+            label="Expiry date"
             fullWidth
             autoComplete="cc-exp"
           />
@@ -96,18 +122,25 @@ function CardInfo() {
             id="cupon"
             label="Cupon Code"
             fullWidth
-            autoComplete="cc-cupon"
+            autoComplete="number"
           />
         </Grid>
         <Grid item xs={6}>
           <Button
+            href="/Confirmation"
             variant="contained"
             color="primary"
-            onClick
+            onClick={getRandomInt(1, 1000)}
             className={classes.button}
           >
-            next
+            Submit
           </Button>
+        </Grid>
+        <Grid item xs={12}>
+          <FormControlLabel
+            control={<Checkbox color="secondary" name="saveCard" value="yes" />}
+            label="Remember credit card details for next time"
+          />
         </Grid>
       </Grid>
     </StylishBox>
@@ -117,13 +150,16 @@ function CardInfo() {
 export default class Transaction extends Component {
   render() {
     return (
-      <Grid container>
-        <AddressField/>
-        <CardInfo />
-        <Grid item xs={12}>
-          <Copyright />
+      <BackgroundBox>
+        <Grid container>
+          <AddressField />
+          <CardInfo />
+          <Grid item xs={12}>
+            <br />
+            <Copyright />
+          </Grid>
         </Grid>
-      </Grid>
+      </BackgroundBox>
     );
   }
 }
