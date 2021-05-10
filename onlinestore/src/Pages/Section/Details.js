@@ -37,6 +37,7 @@ export class Details extends Component {
                 <h2>{item.title}</h2>
                 <span>${item.price}</span>
               </div>
+              <p>Weight: {item.weight} lbs</p>
               <p>{item.description}</p>
               <p>{item.content}</p>
               <Link

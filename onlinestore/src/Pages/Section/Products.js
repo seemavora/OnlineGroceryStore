@@ -8,7 +8,7 @@ export class Products extends Component {
   render() {
     const { products } = this.context;
 
-    return (
+    return (  
       <div id="product">
         {products.map((product) => (
           <div className="card" key={product._id}>
@@ -19,6 +19,8 @@ export class Products extends Component {
               <h3>
                 <Link to={`/product/${product._id}`}>{product.title}</Link>
               </h3>
+              <p1>Weight: {product.weight} lbs</p1>
+              <br></br>
               <span>${product.price}</span>
               <p>{product.description}</p>
               <button onClick={() => this.context.addCart(product._id)}>
