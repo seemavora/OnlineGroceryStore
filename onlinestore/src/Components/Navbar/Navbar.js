@@ -8,15 +8,15 @@ import AuthContext from "../../Context/AuthContext";
 import LogOutBtn from "../Buttons/LogOutBtn";
 
 function Navbar() {
-
   const [toggle, setToggle] = useState(false);
   const { loggedIn, isAdmin } = useContext(AuthContext); // check to see if loggedIn/isAdmin are fields (change to lets)
   // const checkContext = useContext(AuthContext);
- // 
+  //
   const menuToggle = () => {
     setToggle(!toggle);
   };
   // console.log(checkContext);
+
   return (
     <header>
       <div className="menu" onClick={menuToggle}>
@@ -47,7 +47,7 @@ function Navbar() {
           )}
           {loggedIn === true && (
             <>
-              {(isAdmin === 0) && (
+              {isAdmin === 0 && (
                 <>
                   <li>
                     <Link to="/CustomerInventory">Groceries</Link>
@@ -62,7 +62,7 @@ function Navbar() {
                 </>
               )}
 
-              {(isAdmin === 1) && (
+              {isAdmin === 1 && (
                 <>
                   <li>
                     <Link to="/inventory">Inventory</Link>
@@ -74,12 +74,10 @@ function Navbar() {
                     <img src={Close} alt="" width="20" />
                   </li>
                 </>
-
               )}
               <LogOutBtn />
             </>
           )}
-
         </ul>
         <div className="nav-cart">
           <span>0</span>
@@ -91,6 +89,5 @@ function Navbar() {
     </header>
   );
 }
-
 
 export default Navbar;
