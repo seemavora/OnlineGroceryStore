@@ -7,16 +7,116 @@ export class DataProvider extends Component {
     products: [
       {
         _id: "1",
-        title: "Fresh Chicken Thighs",
-        src: "../images/4.png",
-        description: "Pilgrim's Boneless Fresh Chicken Thighs", 
+        title: "Fresh Bananas",
+        src: "../images/8.png",
+        description: "Organic Bananas - From Ecuador", 
         content: "------------------------------------------------------------------",
-        price: 23,
-        weight: 1.8, //lbs
+        price: 1.50,
+        weight: 2, //lbs
         count: 1,
       },
       {
         _id: "2",
+        title: "Good & Gather Apples",
+        src: "../images/9.png",
+        description: "Bag of Fresh, Organic Apples", 
+        content: "------------------------------------------------------------------",
+        price: 3.50,
+        weight: 2, //lbs
+        count: 1,
+      },
+      {
+        _id: "3",
+        title: "California Oranges",
+        src: "../images/16.png",
+        description: "Bag of Fresh Oranges", 
+        content: "------------------------------------------------------------------",
+        price: 4,
+        weight: 4, //lbs
+        count: 1,
+      },
+      {
+        _id: "4",
+        title: "Fresh Chicken Thighs",
+        src: "../images/4.png",
+        description: "Pilgrim's Boneless Fresh Chicken Thighs", 
+        content: "------------------------------------------------------------------",
+        price: 6.90,
+        weight: 5.5, //lbs
+        count: 1,
+      },
+      {
+        _id: "5",
+        title: "Foster Farms Crispy Wings",
+        src: "../images/12.png",
+        description: "Take Out Chicken Wings w/ Buffalo Sauce", 
+        content: "------------------------------------------------------------------",
+        price: 17.50,
+        weight: 4, //lbs
+        count: 1,
+      },
+      {
+        _id: "6",
+        title: "Morning Star Veggie Burgers",
+        src: "../images/13.png",
+        description: "Veggie Burgers Chipotle Black Bean (12)",
+        content: "------------------------------------------------------------------",
+        price: 14.50,
+        weight: 3.2, //lbs
+        count: 1,
+      },
+      {
+        _id: "7",
+        title: "Smoked Boneless Cooked Ham",
+        src: "../images/1.png",
+        description: "Cooked Ham with Natural Juices",
+        content: "------------------------------------------------------------------",
+        price: 12.60,
+        weight: 2, //lbs
+        count: 1,
+      },
+      {
+        _id: "8",
+        title: "Organic Grade A Brown Eggs",
+        src: "../images/3.png",
+        description: "Brown Eggs (10)",
+        content: "------------------------------------------------------------------",
+        price: 4.00,
+        weight: 1.5, //lbs
+        count: 1,
+      },
+      {
+        _id: "9",
+        title: "Fresh Atlantic Salmon",
+        src: "../images/2.png",
+        description: "Atlantic Salmon, Farm-Raised",
+        content: "------------------------------------------------------------------",
+        price: 10,
+        weight: 1, //lbs
+        count: 1,
+      },
+      {
+        _id: "10",
+        title: "Kirkland Cooked Shrimp",
+        src: "../images/11.png",
+        description: "Farmed-Raised, Cooked, Tail-On Shrimp (40 Counts)",
+        content: "------------------------------------------------------------------",
+        price: 15.50,
+        weight: 2, //lbs
+        count: 1,
+      },
+      {
+        _id: "11",
+        title: "Wild Alaskan Pacific Cod",
+        src: "../images/10.png",
+        description: "Frozen Pacific Cod",
+        content: "------------------------------------------------------------------",
+        price: 20,
+        weight: 2, //lbs
+        count: 1,
+      },
+      {
+        _id: "12",
         title: "Chicken & Vegetable Stir Fry",
         src: "../images/5.png",
         description: "Healthy Choice Chicken & Vegetable Stir Fry",
@@ -26,43 +126,43 @@ export class DataProvider extends Component {
         count: 1,
       },
       {
-        _id: "3",
+        _id: "13",
         title: "100% Whole Grain Bread",
         src: "../images/6.png",
         description: "Nature's Own 100% Whole Grain",
         content: "------------------------------------------------------------------",
-        price: 23,
+        price: 2.50,
         weight: 1.25, //lbs
         count: 1,
       },
       {
-        _id: "4",
-        title: "Fresh Chicken Thighs",
-        src: "../images/4.png",
-        description: "Pilgrim's Boneless Fresh Chicken Thighs",
+        _id: "14",
+        title: "Golden Star Jasmine Rice",
+        src: "../images/14.png",
+        description: "Prime Grade Jasmine Rice",
         content: "------------------------------------------------------------------",
-        price: 23,
-        weight: 1.8, //lbs
+        price: 6.50,
+        weight: 5, //lbs
         count: 1,
       },
       {
-        _id: "5",
-        title: "Chicken & Vegetable Stir Fry",
-        src: "../images/5.png",
-        description: "Healthy Choice Chicken & Vegetable Stir Fry",
+        _id: "15",
+        title: "Ritz Crackers Family Size",
+        src: "../images/15.png",
+        description: "Ritz Crackers (12 Stacks)",
         content: "------------------------------------------------------------------",
-        price: 30,
-        weight: 0.57, //lbs
+        price: 2.50,
+        weight: 1.2, //lbs
         count: 1,
       },
       {
-        _id: "6",
-        title: "100% Whole Grain Bread",
-        src: "../images/6.png",
-        description: "Nature's Own 100% Whole Grain",
+        _id: "16",
+        title: "Borden 1% Lowfat Milk",
+        src: "../images/7.png",
+        description: "1% Lowfat Milk",
         content: "------------------------------------------------------------------",
-        price: 23,
-        weight: 1.25, //lbs
+        price: 2,
+        weight: 2, //lbs
         count: 1,
       },
     ],
