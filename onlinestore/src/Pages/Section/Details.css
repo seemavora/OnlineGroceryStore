@@ -19,21 +19,29 @@
   margin: 25px;
 }
 .box .row {
-  display: flex;
-  justify-content: space-between;
+  /* display: flex;
+  justify-content: space-between; */
   margin-bottom: 15px;
+  /* vertical-align: middle; */
+
 }
+
 .box .row h2 {
   text-transform: uppercase;
   letter-spacing: 2px;
+  /* vertical-align: middle; */
 }
 .box .row span {
   color: crimson;
+  position: relative;
+  font-size: 120%;
 }
 
 .box p {
   line-height: 1.5;
   margin: 15px 0;
+  vertical-align: middle;
+
 }
 .box .cart {
   background: #333;
