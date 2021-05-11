@@ -26,7 +26,7 @@ function InventoryList({ items }) {
     return items.map((item, i) => {
       return <li key={i}>
       {item.name}, {item.weight}, {item.price}, {item.description}, {item.quantity}
-      <button onClick={(e) => deleteItems(item.name)}> Delete Item </button>
+      {/* <button onClick={(e) => deleteItems(item.name)}> Delete Item </button> */}
       </li>;
       
     });
