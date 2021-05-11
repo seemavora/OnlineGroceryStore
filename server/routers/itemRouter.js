@@ -29,4 +29,20 @@ router.get("/", auth, async(req, res) =>{
     res.status(500).send();
   }
 });
+
+router.delete("/deleteItem", auth, async(req, res) =>{
+  try{
+    const { name } = req.body;
+    const existingItem = await Item.findOne({ name });
+    // const newItem = new Item({
+    //   name,weight,price, quantity, description
+    // });
+    const savedItem =  await existingItem.delete({name});
+
+    res.json(savedItem);
+  }catch(err){
+    console.error(err);
+    res.status(500).send();
+  }
+})
 module.exports = router;
