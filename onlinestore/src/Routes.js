@@ -11,6 +11,7 @@ import TransactionHistory from "./Pages/TransactionHistory/TransactionHistory";
 import Products from "./Pages/Section/Products";
 import Details from "./Pages/Section/Details";
 import Cart from "./Pages/Section/Cart";
+import Confirmation1 from "./Pages/Section/Confirmation1"
 import { DataProvider } from "./Pages/Section/Context";
 
 export default function Routes(props) {
@@ -55,6 +56,11 @@ export default function Routes(props) {
     {
       path: "/cart",
       component: Cart,
+    },
+
+    {
+    path: "/Confirmation",
+    component: Confirmation1,
     },
   ];
 
