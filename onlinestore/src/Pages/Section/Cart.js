@@ -107,7 +107,7 @@ export class Cart extends Component {
               <Link to="/payment">Payment</Link>
               <h3>Total: $ {priceTotal}</h3>
           </div>  */}
-
+        <TransactionCombo></TransactionCombo>
         </>
       );
     }
