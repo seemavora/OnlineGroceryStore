@@ -29,6 +29,8 @@ function InventoryForm({ getItems }) {
     }
   }
 
+
+
   return (
     <div>
       <form onSubmit={saveItems}>
@@ -73,6 +75,8 @@ function InventoryForm({ getItems }) {
           value={itemDescription}
         />
         <button type="submit">Save new item</button>
+        {/* <button type="submit" onSubmit={deleteItems}>Delete Item</button> */}
+        
       </form>
     </div>
   );

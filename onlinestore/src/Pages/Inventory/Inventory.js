@@ -13,6 +13,12 @@ function Inventory() {
     setItem(itemRes.data);
   }
 
+  // async function deleteItems() {
+  //   const itemRes = await axios.get("http://localhost:5000/item/deleteItem");
+    
+  //    setItem(itemRes.data);
+  //  }
+
   useEffect(() => {
     getItems();
   }, []);
