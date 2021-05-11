@@ -359,7 +359,7 @@ function AddressField() {
     </AddressContainer>
   );
 }
-
+//small change
 export default class Checkout extends Component {
   render() {
     return <AddressField></AddressField>;
