@@ -6,36 +6,23 @@ import "./Details.css";
 import "./Cart.css";
 import TransactionCombo from './TransactionCombo'
 
+
 export class Cart extends Component {
   static contextType = DataContext;
-
-  componentDidMount() {
+  
+    componentDidMount() {
     this.context.getPriceTotal();
-  }
+    }
 
-  componentWeightMount() {
+    componentWeightMount() {
     this.context.getWeightTotal();
-  }
-
-  // shippingCalculated()
-  // {
-  //   <div className = "shipping"></div>
-  //   if ({weightTotal} > 20)
-  //   {
-      
-  //       shipping = 5;
-  //       <h3>Shipping: $5.00 </h3>
-  //   }
-  //   else
-  //   {
-  //       shipping = 0;
-  //       <h3>Shipping: Free</h3>
-  //   }
-    
-  // }
+    }
 
   render() {
-    const { cart, increase, reduction, removeProduct, priceTotal, weightTotal, shipping } = this.context;
+    const { cart, increase, reduction, removeProduct, priceTotal, weightTotal} = this.context;
+    let shipping = (weightTotal > 20) ? 5:0;
+    let weightTotal2 = weightTotal.toFixed(2);
+
     if (cart.length === 0) {
       return <h2 style={{ textAlign: "center" }}>No Products in Cart</h2>;
     } else {
@@ -46,8 +33,8 @@ export class Cart extends Component {
               <img src={item.src} alt="" />
               <div className="box">
                 <div className="row">
-                  <h2>{item.title}</h2>
-                  <span>${item.price * item.count}</span>
+                  <h2>{item.title}</h2> 
+                  <span> ${item.price * item.count}</span>
                 </div>
                 <p>Weight: {item.weight * item.count} lbs</p>
                 <p>{item.description}</p>
@@ -75,41 +62,22 @@ export class Cart extends Component {
           
           <div className = "weightTotal">
             <h3></h3>
-          <h3>Weight: {weightTotal} lbs </h3>
+          <h3>Weight: {weightTotal2} lbs </h3>
           </div> 
-          
-          {/* const weight = 20;
-          <div className = "shipping">  
-          <h3> </h3>
-          if ({weightTotal} {">"} weight)
-          {
-            shipping = 5,
-            <h3>Shipping: $5.00</h3>
-          }
-          else
-          {
-           shipping = 0,
-            <h3>Shipping: Free </h3>
-          }
-          </div> */}
+            
+          <div className = "shipping">
+           <h3> Shipping is : <b>{weightTotal > 20 ? '$5.00' : 'Free'}</b> </h3>
+          </div> 
 
           <div className="priceTotal">
-            <h3>Total: $ {priceTotal}</h3>
+            <h3>Total: $ {priceTotal + shipping} </h3>
           </div>
-
-
-
-          {/* <div className = "weightTotal">
-            <div className="priceTotal">
-              <h3>Weight: {weightTotal} lbs </h3>
-            </div> 
-              <Link to="/payment">Payment</Link>
-              <h3>Total: $ {priceTotal}</h3>
-          </div>  */}
-        <TransactionCombo></TransactionCombo>
+            <TransactionCombo></TransactionCombo>
+         
         </>
       );
-    }
+      
+    } 
   }
 }
 

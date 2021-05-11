@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 
 const PaymentButton = styled(IconButton)({
-  color: 'Green',
+  color: 'Green', 
 });
 
   function CollapseTransaction(){

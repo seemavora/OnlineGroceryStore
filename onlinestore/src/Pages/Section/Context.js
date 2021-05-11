@@ -10,8 +10,7 @@ export class DataProvider extends Component {
         title: "Fresh Chicken Thighs",
         src: "../images/4.png",
         description: "Pilgrim's Boneless Fresh Chicken Thighs", 
-        content:
-          "Howdy, this is random text to see if it will go off the page, ",
+        content: "------------------------------------------------------------------",
         price: 23,
         weight: 1.8, //lbs
         count: 1,
@@ -21,7 +20,7 @@ export class DataProvider extends Component {
         title: "Chicken & Vegetable Stir Fry",
         src: "../images/5.png",
         description: "Healthy Choice Chicken & Vegetable Stir Fry",
-        content: "Howdy, this is random text to see if it will go off the page",
+        content: "------------------------------------------------------------------",
         price: 5.50,
         weight: 0.57, //lbs
         count: 1,
@@ -31,7 +30,7 @@ export class DataProvider extends Component {
         title: "100% Whole Grain Bread",
         src: "../images/6.png",
         description: "Nature's Own 100% Whole Grain",
-        content: "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+        content: "------------------------------------------------------------------",
         price: 23,
         weight: 1.25, //lbs
         count: 1,
@@ -51,7 +50,7 @@ export class DataProvider extends Component {
         title: "Chicken & Vegetable Stir Fry",
         src: "../images/5.png",
         description: "Healthy Choice Chicken & Vegetable Stir Fry",
-        content: "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+        content: "------------------------------------------------------------------",
         price: 30,
         weight: 0.57, //lbs
         count: 1,
@@ -70,7 +69,7 @@ export class DataProvider extends Component {
     cart: [],
     priceTotal: 0,
     weightTotal: 0,
-    shipping: 0,
+    // shipping: 0,
   };
 
   addCart = (id) => {
