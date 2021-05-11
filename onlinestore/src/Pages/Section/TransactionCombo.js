@@ -1,18 +1,6 @@
 import React, { Component } from 'react';
-import Checkout from './Checkout1';
 import { makeStyles, styled } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import {
-  Grid,
-  Box,
-  Link,
-  Button,
-  Checkbox,
-  FormControlLabel,
-} from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
-import Switch from '@material-ui/core/Switch';
-import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 import Collapse from '@material-ui/core/Collapse';
 import Transaction from './Transaction1';
 import PaymentIcon from '@material-ui/icons/Payment';
