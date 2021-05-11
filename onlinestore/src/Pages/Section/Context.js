@@ -70,6 +70,7 @@ export class DataProvider extends Component {
     cart: [],
     priceTotal: 0,
     weightTotal: 0,
+    shipping: 0,
   };
 
   addCart = (id) => {
@@ -96,6 +97,7 @@ export class DataProvider extends Component {
     });
     this.setState({ cart: cart });
     this.getPriceTotal();
+    this.getWeightTotal();
   };
 
   increase = (id) => {
@@ -107,6 +109,8 @@ export class DataProvider extends Component {
     });
     this.setState({ cart: cart });
     this.getPriceTotal();
+    this.getWeightTotal();
+
   };
 
   removeProduct = (id) => {
@@ -119,6 +123,8 @@ export class DataProvider extends Component {
       });
       this.setState({ cart: cart });
       this.getPriceTotal();
+      this.getWeightTotal();
+
     }
   };
 
@@ -140,7 +146,7 @@ export class DataProvider extends Component {
 
   componentDidUpdate() {
     localStorage.setItem("dataCart", JSON.stringify(this.state.cart));
-    localStorage.setItem("dataTotal", JSON.stringify(this.state.total));
+    localStorage.setItem("dataTotal", JSON.stringify(this.state.priceTotal));
   }
 
   componentDidMount() {
@@ -150,7 +156,23 @@ export class DataProvider extends Component {
     }
     const dataTotal = JSON.parse(localStorage.getItem("dataTotal"));
     if (dataTotal !== null) {
-      this.setState({ total: dataTotal });
+      this.setState({ priceTotal: dataTotal });
+    }
+  }
+
+  componentWeightUpdate() {
+    localStorage.setItem("weightCart", JSON.stringify(this.state.cart));
+    localStorage.setItem("weightTotal", JSON.stringify(this.state.weightTotal));
+  }
+
+  componentWeightMount() {
+    const dataWeightCart = JSON.parse(localStorage.getItem("weightCart"));
+    if (dataWeightCart !== null) {
+      this.setState({ cart: dataWeightCart });
+    }
+    const dataWeightTotal = JSON.parse(localStorage.getItem("weightTotal"));
+    if (dataWeightTotal !== null) {
+      this.setState({ weightTotal: dataWeightTotal });
     }
   }
 

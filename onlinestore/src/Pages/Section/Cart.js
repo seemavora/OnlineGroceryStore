@@ -12,8 +12,29 @@ export class Cart extends Component {
     this.context.getPriceTotal();
   }
 
+  componentWeightMount() {
+    this.context.getWeightTotal();
+  }
+
+  // shippingCalculated()
+  // {
+  //   <div className = "shipping"></div>
+  //   if ({weightTotal} > 20)
+  //   {
+      
+  //       shipping = 5;
+  //       <h3>Shipping: $5.00 </h3>
+  //   }
+  //   else
+  //   {
+  //       shipping = 0;
+  //       <h3>Shipping: Free</h3>
+  //   }
+    
+  // }
+
   render() {
-    const { cart, increase, reduction, removeProduct, priceTotal, weightTotal } = this.context;
+    const { cart, increase, reduction, removeProduct, priceTotal, weightTotal, shipping } = this.context;
     if (cart.length === 0) {
       return <h2 style={{ textAlign: "center" }}>No Products in Cart</h2>;
     } else {
@@ -45,14 +66,38 @@ export class Cart extends Component {
               </div>
             </div>
           ))}
+
+          <div className = "subTotal">  
+          <h3> </h3>
+          <h3>Subtotal: $ {priceTotal} </h3>
+          </div>
+          
           <div className = "weightTotal">
+            <h3></h3>
           <h3>Weight: {weightTotal} lbs </h3>
           </div> 
+          
+          {/* const weight = 20;
+          <div className = "shipping">  
+          <h3> </h3>
+          if ({weightTotal} {">"} weight)
+          {
+            shipping = 5,
+            <h3>Shipping: $5.00</h3>
+          }
+          else
+          {
+           shipping = 0,
+            <h3>Shipping: Free </h3>
+          }
+          </div> */}
 
           <div className="priceTotal">
             <Link to="/payment">Payment</Link>
             <h3>Total: $ {priceTotal}</h3>
           </div>
+
+
 
           {/* <div className = "weightTotal">
             <div className="priceTotal">
