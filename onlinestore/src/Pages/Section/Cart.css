@@ -24,7 +24,7 @@ section .cart {
 }
 .priceTotal {
   width: 100%;
-  height: 50px;
+  height: 35px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -32,9 +32,17 @@ section .cart {
 
 .weightTotal {
   width: 100%;
-  height: 50px;
+  height: 35px;
   display: flex;
-  align-items: right;
+  align-items:center;
+  justify-content: space-between;
+}
+
+.subTotal {
+  width: 100%;
+  height: 35px;
+  display: flex;
+  align-items:center;
   justify-content: space-between;
 }
 
