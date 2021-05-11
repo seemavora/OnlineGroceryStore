@@ -4,10 +4,13 @@ const auth = require("../middleware/auth");
 
 router.post("/",auth, async(req, res) => { //auth function addes middleware, first run request to auth
   try{
-    const {name} = req.body;
+    const {name, weight, price, quantity, description} = req.body;
     const newItem = new Item({
-      name,
+      name,weight,price, quantity, description
     });
+    if (!name || !weight || !price || !quantity || !description) {
+      return res.status(400).json({ errorMessage: "Please enter all required fields." }); //400 = bad request
+    }
     const savedItem =  await newItem.save();
 
     res.json(savedItem);
@@ -26,4 +29,20 @@ router.get("/", auth, async(req, res) =>{
     res.status(500).send();
   }
 });
+
+router.delete("/deleteItem", auth, async(req, res) =>{
+  try{
+    const { name } = req.body;
+    const existingItem = await Item.findOne({ name });
+    // const newItem = new Item({
+    //   name,weight,price, quantity, description
+    // });
+    const savedItem =  await existingItem.delete({name});
+
+    res.json(savedItem);
+  }catch(err){
+    console.error(err);
+    res.status(500).send();
+  }
+})
 module.exports = router;
