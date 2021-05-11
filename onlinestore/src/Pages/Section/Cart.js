@@ -4,6 +4,7 @@ import { DataContext } from "./Context";
 import { Link } from "react-router-dom";
 import "./Details.css";
 import "./Cart.css";
+import Transaction from './Transaction1';
 
 export class Cart extends Component {
   static contextType = DataContext;
@@ -106,7 +107,7 @@ export class Cart extends Component {
               <Link to="/payment">Payment</Link>
               <h3>Total: $ {priceTotal}</h3>
           </div>  */}
-
+<Transaction></Transaction>
         </>
       );
     }
