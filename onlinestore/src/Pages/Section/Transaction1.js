@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
+import axios from 'axios';
 import Checkout from './Checkout1';
 import { makeStyles, styled } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -72,95 +73,205 @@ function Copyright() {
   );
 }
 
-function CardInfo() {
+
+// function CardInfo() {
+//   const classes = useStyles();
+//   return (
+//     <StylishBox>
+//       <Typography variant="h6">
+//         Payment Method
+//       </Typography>
+//       <Grid container spacing={3}>
+//         <Grid item xs={12} md={6}>
+//           <TextField
+//             required
+//             id="cardName"
+//             label="Name on card"
+//             fullWidth
+//             autoComplete="name"
+//           />
+//         </Grid>
+//         <Grid item xs={12} md={6}>
+//           <TextField
+//             required
+//             id="cardNumber"
+//             label="Card number"
+//             fullWidth
+//             autoComplete="number"
+//           />
+//         </Grid>
+//         <Grid item xs={12} md={6}>
+//           <TextField
+//             required
+//             id="cvv"
+//             label="CVV"
+//             helperText="Last three digits on the right side of the signature strip"
+//             fullWidth
+//             autoComplete="cc-csc"
+//           />
+//         </Grid>
+//         <Grid item xs={12} md={6}>
+//           <TextField
+//             required
+//             id="expDate"
+//             label="Expiry date"
+//             fullWidth
+//             autoComplete="cc-exp"
+//           />
+//         </Grid>
+//         <Grid item xs={12} md={6}>
+//           <TextField
+//             required
+//             id="cupon"
+//             label="Cupon Code"
+//             fullWidth
+//             autoComplete="number"
+//           />
+//         </Grid>
+//         <Grid item xs={6}>
+//           <Button
+//             href="/Confirmation"
+//             variant="contained"
+//             color="primary"
+//             // onChange={{saveTransaction}}
+//             onClick={{saveTransaction}}
+//             className={classes.button}
+//           >
+//             Submit
+//           </Button>
+//         </Grid>
+//         <Grid item xs={12}>
+//           <FormControlLabel
+//             control={<Checkbox color="secondary" name="saveCard" value="yes" />}
+//             label="Remember credit card details for next time"
+//           />
+//         </Grid>
+//       </Grid>
+//     </StylishBox>
+//   );
+// }
+
+export default function Transaction() {
+  const [userEmail, setUserEmail] = useState(localStorage.getItem('email'));
+  const [purchaseTotal, setPurchaseTotal] = useState(localStorage.getItem('dataTotal'));
   const classes = useStyles();
+
+
+
+  async function saveTransaction(e) {
+    e.preventDefault();
+
+    try {
+      const transactionData = {
+        userEmail, purchaseTotal
+      };
+      // userEmail = localStorage.getItem('email');
+      // purchaseTotal = localStorage.getItem('dataTota');
+      await axios.post("http://localhost:5000/transaction/", transactionData); //posts on server
+      // localStorage.getItem("email", email);
+
+      // await axios.post("http://localhost:5000/auth/isAdmin", registerData); 
+      // await getIsAdmin();
+
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  // render() {
   return (
-    <StylishBox>
-      <Typography variant="h6">
-        Payment Method
+    <BackgroundBox>
+      <Grid container>
+        <AddressField />
+        {/* <CardInfo /> */}
+        <StylishBox>
+          <Typography variant="h6">
+            Payment Method
       </Typography>
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="cardName"
-            label="Name on card"
-            fullWidth
-            autoComplete="name"
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="cardNumber"
-            label="Card number"
-            fullWidth
-            autoComplete="number"
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="cvv"
-            label="CVV"
-            helperText="Last three digits on the right side of the signature strip"
-            fullWidth
-            autoComplete="cc-csc"
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="expDate"
-            label="Expiry date"
-            fullWidth
-            autoComplete="cc-exp"
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="cupon"
-            label="Cupon Code"
-            fullWidth
-            autoComplete="number"
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <Button
-            href="/Confirmation"
-            variant="contained"
-            color="primary"
-            onClick={getRandomInt(1, 1000)}
-            className={classes.button}
-          >
-            Submit
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={6}>
+              <TextField
+                required
+                id="cardName"
+                label="Name on card"
+                fullWidth
+                autoComplete="name"
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                required
+                id="cardNumber"
+                label="Card number"
+                fullWidth
+                autoComplete="number"
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                required
+                id="cvv"
+                label="CVV"
+                helperText="Last three digits on the right side of the signature strip"
+                fullWidth
+                autoComplete="cc-csc"
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                required
+                id="expDate"
+                label="Expiry date"
+                fullWidth
+                autoComplete="cc-exp"
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                required
+                id="cupon"
+                label="Cupon Code"
+                fullWidth
+                autoComplete="number"
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <div>
+
+              
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    // onChange={{saveTransaction}}
+                    onClick={saveTransaction}
+                    className={classes.button}
+                    href="/Confirmation"
+                  >
+                    Place Order
           </Button>
-        </Grid>
+               <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                 href="/Confirmation">
+                   Next
+               </Button>
+              </div>
+            </Grid>
+            <Grid item xs={12}>
+              <FormControlLabel
+                control={<Checkbox color="secondary" name="saveCard" value="yes" />}
+                label="Remember credit card details for next time"
+              />
+            </Grid>
+          </Grid>
+        </StylishBox>
         <Grid item xs={12}>
-          <FormControlLabel
-            control={<Checkbox color="secondary" name="saveCard" value="yes" />}
-            label="Remember credit card details for next time"
-          />
+          <br />
+          <Copyright />
         </Grid>
       </Grid>
-    </StylishBox>
+    </BackgroundBox>
   );
-}
-
-export default class Transaction extends Component {
-  render() {
-    return (
-      <BackgroundBox>
-        <Grid container>
-          <AddressField />
-          <CardInfo />
-          <Grid item xs={12}>
-            <br />
-            <Copyright />
-          </Grid>
-        </Grid>
-      </BackgroundBox>
-    );
-  }
+  // }
 }
