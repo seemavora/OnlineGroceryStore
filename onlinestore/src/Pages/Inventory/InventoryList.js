@@ -40,30 +40,33 @@ function InventoryList({ items, deleteItem }) {
         <Table aria-label="simple table" minWidth="650">
           <TableHead>
             <TableRow>
-              <TableCell align="center"></TableCell>
+              
+              <TableCell align="center">#</TableCell>
               <TableCell align="center">Item Name</TableCell>
               <TableCell align="center">Item weight &nbsp;(lbs)</TableCell>
               <TableCell align="center">Item price &nbsp;($)</TableCell>
               <TableCell align="center">Item quantity</TableCell>
               <TableCell align="center">Item description</TableCell>
+              <TableCell align="center">Remove</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {items.map((item, index) => (
               <TableRow key={item.name}>
-                <TableCell align="center">
-                  <IconButton
-                    aria-label="delete"
-                    onClick={() => deleteItem(index)}
-                  >
-                    <ClearIcon />
-                  </IconButton>
-                </TableCell>
+                <TableCell align="center">{index+1}</TableCell>
                 <TableCell align="center">{item.name}</TableCell>
                 <TableCell align="center">{item.weight}</TableCell>
                 <TableCell align="center">{item.price}</TableCell>
                 <TableCell align="center">{item.quantity}</TableCell>
                 <TableCell align="center">{item.description}</TableCell>
+                <TableCell align="center">
+                  <IconButton
+                    aria-label="delete"
+                    onClick={() => deleteItem(index)}
+                  >
+                    <ClearIcon color="error" />
+                  </IconButton>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
