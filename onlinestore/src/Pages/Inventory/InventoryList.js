@@ -32,24 +32,6 @@ function InventoryList({ items }) {
       console.error(err);
     }
   }
-  function renderItems() {
-    return items.map((item, i) => {
-      return (
-        <TableContainer component={Paper} key={i}>
-          <Table aria-label={'simple table'} minWidth="650">
-            <TableHead>
-              <TableRow>
-                <TableCell>Dessert (100g serving)</TableCell>
-              </TableRow>
-            </TableHead>
-          </Table>
-          {/* {item.name}, {item.weight}, {item.price}, {item.description},{' '}
-          {item.quantity} */}
-          {/* <button onClick={(e) => deleteItems(item.name)}> Delete Item </button> */}
-        </TableContainer>
-      );
-    });
-  }
 
   function sampleTable() {
     return (
