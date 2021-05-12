@@ -34,11 +34,11 @@ function InventoryForm({ getItems }) {
       await axios.post('http://localhost:5000/item/', itemData);
 
       //  clear form
-      setItemName("")
-      setItemWeight("")
-      setItemPrice("")
-      setItemQuantity("")
-      setItemDescription("")
+      setItemName('');
+      setItemWeight('');
+      setItemPrice('');
+      setItemQuantity('');
+      setItemDescription('');
 
       getItems();
     } catch (err) {
