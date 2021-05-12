@@ -2,13 +2,18 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Homepage from "./Pages/Homepage/Homepage";
 import Inventory from "./Pages/Inventory/Inventory";
-import CustomerInventory from "./Pages/CustomerInventory/CustomerInventory";
+// import CustomerInventory from "./Pages/CustomerInventory/CustomerInventory";
 import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/SignUp/SignUp";
 import Navbar from "./Components/Navbar/Navbar";
 import Contact from "./Pages/Contact/Contact";
-import CartScreen from "./Pages/Cart/CartScreen";
 import TransactionHistory from "./Pages/TransactionHistory/TransactionHistory";
+import Products from "./Pages/Section/Products";
+import Details from "./Pages/Section/Details";
+import Cart from "./Pages/Section/Cart";
+import Confirmation1 from "./Pages/Section/Confirmation1"
+import { DataProvider } from "./Pages/Section/Context";
+
 export default function Routes(props) {
   const routes = [
     {
@@ -28,38 +33,54 @@ export default function Routes(props) {
       component: Inventory,
     },
     {
-      path:'/TransactionHistory',
-      component: TransactionHistory
+      path: "/TransactionHistory",
+      component: TransactionHistory,
     },
     {
       path: "/Contact",
       component: Contact,
     },
+
+    // {
+    //   path: "/CustomerInventory",
+    //   component: CustomerInventory,
+    // },
     {
-      path: "/Cart",
-      component: CartScreen,
+      path: "/product",
+      component: Products,
     },
     {
-      path: "/CustomerInventory",
-      component: CustomerInventory
+      path: "/product/:id",
+      component: Details,
+    },
+    {
+      path: "/cart",
+      component: Cart,
+    },
+
+    {
+    path: "/Confirmation",
+    component: Confirmation1,
     },
   ];
 
   return (
-    <Router>
-      <Navbar />
-      <Switch>
-        {routes.map((route, index) => {
-          return (
-            <Route
-              exact
-              key={index}
-              path={route.path}
-              component={route.component}
-            />
-          );
-        })}
-      </Switch>
-    </Router>
+    <DataProvider>
+      <Router>
+        <Navbar />
+        <Switch>
+          {routes.map((route, index) => {
+            return (
+              <Route
+                exact
+                key={index}
+                path={route.path}
+                component={route.component}
+              />
+            );
+          })}
+        </Switch>
+      </Router>
+    </DataProvider>
   );
 }
