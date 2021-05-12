@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Table, makeStyles } from '@material-ui/core';
+import { Table, makeStyles, IconButton } from '@material-ui/core';
+import ClearIcon from '@material-ui/icons/Clear';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
@@ -14,7 +15,7 @@ const useStyles = makeStyles({
   },
 });
 
-function InventoryList({ items }) {
+function InventoryList({ items, deleteItem }) {
   const [name, setName] = useState(null);
   async function deleteItems(e) {
     // e.preventDefault()
@@ -39,6 +40,7 @@ function InventoryList({ items }) {
         <Table aria-label="simple table" minWidth="650">
           <TableHead>
             <TableRow>
+              <TableCell align="center"></TableCell>
               <TableCell align="center">Item Name</TableCell>
               <TableCell align="center">Item weight &nbsp;(lbs)</TableCell>
               <TableCell align="center">Item price &nbsp;($)</TableCell>
@@ -47,8 +49,16 @@ function InventoryList({ items }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {items.map((item) => (
+            {items.map((item, index) => (
               <TableRow key={item.name}>
+                <TableCell align="center">
+                  <IconButton
+                    aria-label="delete"
+                    onClick={() => deleteItem(index)}
+                  >
+                    <ClearIcon />
+                  </IconButton>
+                </TableCell>
                 <TableCell align="center">{item.name}</TableCell>
                 <TableCell align="center">{item.weight}</TableCell>
                 <TableCell align="center">{item.price}</TableCell>
