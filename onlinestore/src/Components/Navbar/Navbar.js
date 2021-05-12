@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 import AuthContext from "../../Context/AuthContext";
 import LogOutBtn from "../Buttons/LogOutBtn";
+import { DataContext } from "../../Pages/Section/Context";
 
 function Navbar() {
   const [toggle, setToggle] = useState(false);
@@ -16,6 +17,7 @@ function Navbar() {
     setToggle(!toggle);
   };
   // console.log(checkContext);
+  const { cart } = useContext(DataContext);
 
   return (
     <header>
@@ -80,7 +82,7 @@ function Navbar() {
           )}
         </ul>
         <div className="nav-cart">
-          <span>0</span>
+          <span>{cart.length}</span>
           <Link to="/cart">
             <img src={CartIcon} alt="" width="20" />
           </Link>
