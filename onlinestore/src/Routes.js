@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Homepage from "./Pages/Homepage/Homepage";
 import Inventory from "./Pages/Inventory/Inventory";
-import CustomerInventory from "./Pages/CustomerInventory/CustomerInventory";
+// import CustomerInventory from "./Pages/CustomerInventory/CustomerInventory";
 import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/SignUp/SignUp";
 import Navbar from "./Components/Navbar/Navbar";
@@ -41,10 +41,10 @@ export default function Routes(props) {
       component: Contact,
     },
 
-    {
-      path: "/CustomerInventory",
-      component: CustomerInventory,
-    },
+    // {
+    //   path: "/CustomerInventory",
+    //   component: CustomerInventory,
+    // },
     {
       path: "/product",
       component: Products,

@@ -50,7 +50,7 @@ function Navbar() {
               {isAdmin === 0 && (
                 <>
                   <li>
-                    <Link to="/CustomerInventory">Groceries</Link>
+                    <Link to="/Product">Groceries</Link>
                   </li>
                   <li>
                     <Link to="/cart">Cart</Link>
