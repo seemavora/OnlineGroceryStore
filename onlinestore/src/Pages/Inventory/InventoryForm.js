@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { makeStyles, Button } from '@material-ui/core';
+import { makeStyles, Button, Snackbar } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles((theme) => ({
@@ -19,6 +19,16 @@ function InventoryForm({ getItems }) {
   const [itemPrice, setItemPrice] = useState('');
   const [itemQuantity, setItemQuantity] = useState('');
   const [itemDescription, setItemDescription] = useState('');
+  
+  const [state, setState] = React.useState(false);
+
+  const handleClick = (newState) => () => {
+    setState(true);
+  };
+
+  const handleClose = () => {
+    setState(false);
+  };
   async function saveItems(e) {
     e.preventDefault();
 
@@ -112,6 +122,12 @@ function InventoryForm({ getItems }) {
         <Button variant="contained" color="primary" type="submit">
           Save new item
         </Button>
+        <Snackbar
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+          open={state}
+          onClose={handleClose}
+          message="I love snacks"
+        />
         {/* <button type="submit" onSubmit={deleteItems}>Delete Item</button> */}
       </form>
     </div>

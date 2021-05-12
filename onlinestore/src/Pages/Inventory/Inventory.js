@@ -8,12 +8,11 @@ function Inventory() {
 
   async function getItems() {
     const itemRes = await axios.get('http://localhost:5000/item/');
-
     setItem(itemRes.data);
   }
 
   const deleteItem = (index) => {
-    let data = [...items];
+    let data = [...items];  
     data.splice(index, 1);
     setItem( data);
   };
