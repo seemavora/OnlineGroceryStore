@@ -32,6 +32,14 @@ function InventoryForm({ getItems }) {
       };
       // await axios.post("http://localhost:5000/customer/", itemData);
       await axios.post('http://localhost:5000/item/', itemData);
+
+      //  clear form
+      setItemName("")
+      setItemWeight("")
+      setItemPrice("")
+      setItemQuantity("")
+      setItemDescription("")
+
       getItems();
     } catch (err) {
       console.error(err);
