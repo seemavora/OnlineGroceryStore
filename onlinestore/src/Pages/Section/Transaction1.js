@@ -12,8 +12,8 @@ import {
   FormControlLabel,
 } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
+import { useHistory } from 'react-router-dom';
 import AddressField from './Checkout1';
-
 
 const useStyles = makeStyles((theme) => ({
   listItem: {
@@ -72,7 +72,6 @@ function Copyright() {
     </Typography>
   );
 }
-
 
 // function CardInfo() {
 //   const classes = useStyles();
@@ -152,27 +151,31 @@ function Copyright() {
 // }
 
 export default function Transaction() {
+  let history = useHistory();
   const [userEmail, setUserEmail] = useState(localStorage.getItem('email'));
-  const [purchaseTotal, setPurchaseTotal] = useState(localStorage.getItem('dataTotal'));
+  const [purchaseTotal, setPurchaseTotal] = useState(
+    localStorage.getItem('dataTotal')
+  );
   const classes = useStyles();
-
-
 
   async function saveTransaction(e) {
     e.preventDefault();
 
     try {
       const transactionData = {
-        userEmail, purchaseTotal
+        userEmail,
+        purchaseTotal,
       };
       // userEmail = localStorage.getItem('email');
       // purchaseTotal = localStorage.getItem('dataTota');
-      await axios.post("http://localhost:5000/transaction/", transactionData); //posts on server
+      await axios.post('http://localhost:5000/transaction/', transactionData); //posts on server
       // localStorage.getItem("email", email);
 
-      // await axios.post("http://localhost:5000/auth/isAdmin", registerData); 
+      // await axios.post("http://localhost:5000/auth/isAdmin", registerData);
       // await getIsAdmin();
 
+      // redirect
+      history.push('/Confirmation');
     } catch (err) {
       console.error(err);
     }
@@ -185,9 +188,7 @@ export default function Transaction() {
         <AddressField />
         {/* <CardInfo /> */}
         <StylishBox>
-          <Typography variant="h6">
-            Payment Method
-      </Typography>
+          <Typography variant="h6">Payment Method</Typography>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
               <TextField
@@ -237,30 +238,22 @@ export default function Transaction() {
             </Grid>
             <Grid item xs={6}>
               <div>
-
-              
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    // onChange={{saveTransaction}}
-                    onClick={saveTransaction}
-                    className={classes.button}
-                    href="/Confirmation"
-                  >
-                    Place Order
-          </Button>
-               <Button
-                variant="contained"
-                color="primary"
-                className={classes.button}
-                 href="/Confirmation">
-                   Next
-               </Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  // onChange={{saveTransaction}}
+                  onClick={saveTransaction}
+                  className={classes.button}
+                >
+                  Place Order
+                </Button>
               </div>
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel
-                control={<Checkbox color="secondary" name="saveCard" value="yes" />}
+                control={
+                  <Checkbox color="secondary" name="saveCard" value="yes" />
+                }
                 label="Remember credit card details for next time"
               />
             </Grid>
