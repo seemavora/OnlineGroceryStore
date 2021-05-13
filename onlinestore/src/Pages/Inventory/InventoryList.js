@@ -16,23 +16,7 @@ const useStyles = makeStyles({
 });
 
 function InventoryList({ items, deleteItem }) {
-  // const [title, setTitle] = useState(null);
-  // async function deleteItems(e) {
-  //   // e.preventDefault()
-  //   // e.persist();;
-  //   console.log('here');
-  //   try {
-  //     const itemData = {
-  //       title,
-  //     };
-  //     // await axios.post("http://localhost:5000/customer/", itemData);
-  //     await axios.delete('http://localhost:5000/item/deleteItem/', itemData);
-  //     console.log(itemData);
-  //     deleteItems(title);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // }
+
 
   function sampleTable() {
     return (

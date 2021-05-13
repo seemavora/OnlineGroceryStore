@@ -32,13 +32,13 @@ router.get("/", auth, async(req, res) =>{
 });
 
 router.delete("/deleteItem", auth, async(req, res) =>{
+  console.log(req.body)
   try{
     const { title } = req.body;
-    const existingItem = await Item.findOne({ title });
-    // const newItem = new Item({
-    //   title,weight,price, quantity, description
-    // });
-    const savedItem =  await existingItem.delete({title});
+    const savedItem =  await Item.findOneAndDelete({title: title}, function (err) {
+      if(err) console.log(err);
+      console.log("Successful deletion");
+    });
 
     res.json(savedItem);
   }catch(err){

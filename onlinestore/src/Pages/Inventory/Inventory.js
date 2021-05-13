@@ -27,19 +27,15 @@ function Inventory() {
   // }
 
   const deleteItem = async (title,index) => {
-    let data = [...items];  
+    let data = [...items];
     data.splice(index, 1);
     setItem( data);
     try {
-      const itemData = {
-        title,
-      };
-      await axios.delete('http://localhost:5000/item/deleteItem/',title);
-   
+      await axios.delete('http://localhost:5000/item/deleteItem/',{ data: { title: title }});
+
     } catch (err) {
       console.error(err);
     }
-
   };
 
   // async function deleteItems() {
