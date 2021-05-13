@@ -196,15 +196,13 @@ export class DataProvider extends Component {
     // shipping: 0,
   };
   getItemsFromDB(){
-    axios.get('http://localhost:5000/item/' + this.props.match.params.id)
+    axios.get('http://localhost:5000/item/')
       .then(res => {
         this.setState({
-          name: res.data.name,
-          weight: res.data.weight,
-          price: res.data.price,
-          quantity: res.data.quantity,
-          description: res.data.description
+          items: res.data.items,
+          products: [...this.products, res.data.items]
         });
+        
       })
       .catch((error) => {
         console.log(error);
@@ -212,11 +210,6 @@ export class DataProvider extends Component {
   }
   addCart = (id) => {
     const { products, cart } = this.state;
-    const {dbItems} = this.getItemsFromDB;
-  
-    // const { dbItems } = this.state;
-    // dbItems = Context();
-    // console.log(dbItems);
     const check = cart.every((item) => {
       return item._id !== id;
     });
@@ -224,7 +217,7 @@ export class DataProvider extends Component {
       const data = products.filter((product) => {
         return product._id === id;
       });
-      this.setState({ cart: [...cart, ...data, ...dbItems] });
+      this.setState({ cart: [...cart, ...data] });
     } else {
       alert("The product has been added to cart.");
     }
@@ -289,6 +282,7 @@ export class DataProvider extends Component {
   componentDidUpdate() {
     localStorage.setItem("dataCart", JSON.stringify(this.state.cart));
     localStorage.setItem("dataTotal", JSON.stringify(this.state.priceTotal));
+
   }
 
   componentDidMount() {
@@ -300,6 +294,7 @@ export class DataProvider extends Component {
     if (dataTotal !== null) {
       this.setState({ priceTotal: dataTotal });
     }
+     this.setState(this.getItemsFromDB());
   }
 
   componentWeightUpdate() {
@@ -337,6 +332,7 @@ export class DataProvider extends Component {
           getWeightTotal,
         }}
       >
+       
         {this.props.children}
       </DataContext.Provider>
     );
