@@ -54,12 +54,16 @@ function Navbar() {
                   <li>
                     <Link to="/Product">Groceries</Link>
                   </li>
-                  <li>
-                    <Link to="/cart">Cart</Link>
-                  </li>
+
                   <li className="close" onClick={menuToggle}>
                     <img src={Close} alt="" width="20" />
                     {/* <LogOutBtn /> */}
+                  </li>
+                  <li className="nav-cart">
+                    <span>{cart.length}</span>
+                    <Link to="/cart">
+                      <img src={CartIcon} alt="" width="20" />
+                    </Link>
                   </li>
                 </>
               )}
@@ -81,12 +85,6 @@ function Navbar() {
             </>
           )}
         </ul>
-        <div className="nav-cart">
-          <span>{cart.length}</span>
-          <Link to="/cart">
-            <img src={CartIcon} alt="" width="20" />
-          </Link>
-        </div>
       </nav>
     </header>
   );

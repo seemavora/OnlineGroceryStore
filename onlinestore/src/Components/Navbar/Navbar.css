@@ -60,13 +60,13 @@ header ul li a {
   color: whitesmoke;
 }
 header .nav-cart {
-  margin-right: 75px;
+  margin-right: 50px;
   margin-top: 15px;
 }
 nav .nav-cart span {
   position: absolute;
   top: -12px;
-  right: -7px;
+  right: 5px;
   background: crimson;
   font-size: 10px;
   color: whitesmoke;
