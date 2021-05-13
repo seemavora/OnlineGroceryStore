@@ -53,8 +53,7 @@ function InventoryList({ items, deleteItem }) {
           <TableBody>
             {items.map((item, index) => (
               <TableRow key={item.name}>
-                <TableCell align="center">{index+1}</TableCell>
-                <TableCell align="center">{item.name}</TableCell>
+                <TableCell align="center">{item.title}</TableCell>
                 <TableCell align="center">{item.weight}</TableCell>
                 <TableCell align="center">{item.price}</TableCell>
                 <TableCell align="center">{item.quantity}</TableCell>
