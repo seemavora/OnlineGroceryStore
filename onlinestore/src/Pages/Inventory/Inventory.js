@@ -11,28 +11,34 @@ function Inventory() {
     setItem(itemRes.data);
   }
   const [title, setTitle] = useState(null);
-  async function deleteItemsBackend() {
-    // e.preventDefault()
-    // e.persist();;
-    console.log('here');
+  // async function deleteItemsBackend() {
+  //   // e.preventDefault()
+  //   // e.persist();;
+  //   console.log('here');
+  //   try {
+  //     const itemData = {
+  //       title,
+  //     };
+  //     await axios.delete('http://localhost:5000/item/deleteItem/',title);
+   
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // }
+
+  const deleteItem = async (title,index) => {
+    let data = [...items];  
+    data.splice(index, 1);
+    setItem( data);
     try {
       const itemData = {
         title,
       };
-      // await axios.post("http://localhost:5000/customer/", itemData);
       await axios.delete('http://localhost:5000/item/deleteItem/',title);
-      // console.log(itemData);
-      deleteItemsBackend(title);
+   
     } catch (err) {
       console.error(err);
     }
-  }
-
-  const deleteItem = (title,index) => {
-    let data = [...items];  
-    data.splice(index, 1);
-    setItem( data);
-    deleteItemsBackend(title);
 
   };
 
