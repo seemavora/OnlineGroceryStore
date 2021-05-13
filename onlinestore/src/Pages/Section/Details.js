@@ -32,7 +32,7 @@ export class Details extends Component {
       {console.log(this.props)}
         {product.map((item) => (
           <div className="details" key={item._id}>
-            <img src={item.src} alt="" />
+            <img src={item.src ? item.src : "../public/noImage.png"}  alt="" />
             <div className="box">
               <div className="row">
                 <h2>{item.title}</h2>
@@ -40,7 +40,7 @@ export class Details extends Component {
               </div>
               <p>Weight: {item.weight} lbs</p>
               <p>{item.description}</p>
-              <p>{item.content}</p>
+              <p>{item.content ? item.content : "------------------------------------------------------------------"}</p>
               <Link
                 to="/cart"
                 className="cart"

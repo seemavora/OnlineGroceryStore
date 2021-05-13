@@ -199,10 +199,8 @@ export class DataProvider extends Component {
     axios.get('http://localhost:5000/item/')
       .then(res => {
         this.setState({
-          items: res.data.items,
-          products: [...this.products, res.data.items]
+          products: [...this.state.products, ...res.data]
         });
-        
       })
       .catch((error) => {
         console.log(error);

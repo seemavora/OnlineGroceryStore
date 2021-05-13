@@ -24,11 +24,12 @@ function InventoryForm({ getItems }) {
 
     try {
       const itemData = {
-        name: itemName,
+        title: itemName,
         weight: itemWeight,
         price: itemPrice,
         quantity: itemQuantity,
         description: itemDescription,
+        count:1
       };
       // await axios.post("http://localhost:5000/customer/", itemData);
       await axios.post('http://localhost:5000/item/', itemData);

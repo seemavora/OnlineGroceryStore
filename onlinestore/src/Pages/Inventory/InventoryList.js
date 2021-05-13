@@ -49,7 +49,7 @@ function InventoryList({ items }) {
           <TableBody>
             {items.map((item) => (
               <TableRow key={item.name}>
-                <TableCell align="center">{item.name}</TableCell>
+                <TableCell align="center">{item.title}</TableCell>
                 <TableCell align="center">{item.weight}</TableCell>
                 <TableCell align="center">{item.price}</TableCell>
                 <TableCell align="center">{item.quantity}</TableCell>
