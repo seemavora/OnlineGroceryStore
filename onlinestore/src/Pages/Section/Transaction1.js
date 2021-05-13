@@ -1,8 +1,8 @@
-import React, { Component, useState } from 'react';
-import axios from 'axios';
-import Checkout from './Checkout1';
-import { makeStyles, styled } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import React, { Component, useState } from "react";
+import axios from "axios";
+import Checkout from "./Checkout1";
+import { makeStyles, styled } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 import {
   Grid,
   Box,
@@ -10,10 +10,10 @@ import {
   Button,
   Checkbox,
   FormControlLabel,
-} from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
-import { useHistory } from 'react-router-dom';
-import AddressField from './Checkout1';
+} from "@material-ui/core";
+import TextField from "@material-ui/core/TextField";
+import { useHistory } from "react-router-dom";
+import AddressField from "./Checkout1";
 
 const useStyles = makeStyles((theme) => ({
   listItem: {
@@ -34,27 +34,31 @@ const useStyles = makeStyles((theme) => ({
 const BackgroundBox = styled(Box)({
   //backgroundImage: 'url(/images/lettuce.png)',
   //background: 'linear-gradient(0.25turn, #dcedc8, #c5e1a5, #aed581)',
-  backgroundRepeat: 'no-repeat',
-  backgroundPosition: 'center center',
-  backgroundSize: 'cover',
-  backgroundAttachment: 'fixed',
-  height: 'auto',
-  width: '100%',
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "center center",
+  backgroundSize: "cover",
+  backgroundAttachment: "fixed",
+  height: "auto",
+  width: "100%",
 });
 
 const StylishBox = styled(Box)({
   //background: 'linear-gradient(0.25turn, #dcedc8, #c5e1a5, #aed581)',
   border: 0,
   borderRadius: 5,
-  boxShadow: '0 3px 5px 2px rgba(165, 188, 163, .3)',
-  color: 'grey',
-  width: '50%',
-  height: 'auto',
-  padding: '0 30px',
-  marginTop: '50px',
-  marginLeft: 'auto',
-  marginRight: 'auto',
+  boxShadow: "0 3px 5px 2px rgba(165, 188, 163, .3)",
+  color: "grey",
+  width: "50%",
+  height: "auto",
+  padding: "0 30px",
+  marginTop: "50px",
+  marginLeft: "auto",
+  marginRight: "auto",
 });
+
+function clearLocalStorage() {
+  return localStorage.clear();
+}
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -63,12 +67,12 @@ function getRandomInt(min, max) {
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
+      {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
         OFS
-      </Link>{' '}
+      </Link>{" "}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
     </Typography>
   );
 }
@@ -152,9 +156,9 @@ function Copyright() {
 
 export default function Transaction() {
   let history = useHistory();
-  const [userEmail, setUserEmail] = useState(localStorage.getItem('email'));
+  const [userEmail, setUserEmail] = useState(localStorage.getItem("email"));
   const [purchaseTotal, setPurchaseTotal] = useState(
-    localStorage.getItem('dataTotal')
+    localStorage.getItem("dataTotal")
   );
   const classes = useStyles();
 
@@ -168,14 +172,14 @@ export default function Transaction() {
       };
       // userEmail = localStorage.getItem('email');
       // purchaseTotal = localStorage.getItem('dataTota');
-      await axios.post('http://localhost:5000/transaction/', transactionData); //posts on server
+      await axios.post("http://localhost:5000/transaction/", transactionData); //posts on server
       // localStorage.getItem("email", email);
 
       // await axios.post("http://localhost:5000/auth/isAdmin", registerData);
       // await getIsAdmin();
 
       // redirect
-      history.push('/Confirmation');
+      history.push("/Confirmation");
     } catch (err) {
       console.error(err);
     }
