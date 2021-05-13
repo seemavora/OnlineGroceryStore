@@ -4,13 +4,14 @@ const auth = require("../middleware/auth");
 
 router.post("/",auth, async(req, res) => { //auth function addes middleware, first run request to auth
   try{
-    const {name, weight, price, quantity, description} = req.body;
+    const {title, weight, price, quantity, description, count} = req.body;
     const newItem = new Item({
-      name,weight,price, quantity, description
+      title,weight,price, quantity, description, count
     });
-    if (!name || !weight || !price || !quantity || !description) {
+    if (!title || !weight || !price || !quantity || !description) {
       return res.status(400).json({ errorMessage: "Please enter all required fields." }); //400 = bad request
     }
+    // count = 1;
     const savedItem =  await newItem.save();
 
     res.json(savedItem);
@@ -31,13 +32,13 @@ router.get("/", auth, async(req, res) =>{
 });
 
 router.delete("/deleteItem", auth, async(req, res) =>{
+  console.log(req.body)
   try{
-    const { name } = req.body;
-    const existingItem = await Item.findOne({ name });
-    // const newItem = new Item({
-    //   name,weight,price, quantity, description
-    // });
-    const savedItem =  await existingItem.delete({name});
+    const { title } = req.body;
+    const savedItem =  await Item.findOneAndDelete({title: title}, function (err) {
+      if(err) console.log(err);
+      console.log("Successful deletion");
+    });
 
     res.json(savedItem);
   }catch(err){

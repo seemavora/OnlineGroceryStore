@@ -35,6 +35,7 @@ export class Cart extends Component {
                 <div className="row">
                   <h2>{item.title}</h2> 
                   <span> ${item.price * item.count}</span>
+                  {/* <span> ${item.price * 1}</span> */}
                 </div>
                 <p>Weight: {item.weight * item.count} lbs</p>
                 <p>{item.description}</p>

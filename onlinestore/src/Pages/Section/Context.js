@@ -1,15 +1,33 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
+import axios from 'axios';
 
 export const DataContext = React.createContext();
 
+// function Context() {
+//   const [items, setItem] = useState([]);
+//   async function getItems() {
+//     const itemRes = await axios.get("http://localhost:5000/item/");
+
+//     setItem(itemRes.data);
+//   }
+//   return getItems();
+//   //  useEffect(() => {
+//   //    getItems();
+//   //  }, []);
+// }
 export class DataProvider extends Component {
+  constructor(props) {
+
+    super(props);
+   
+  }
   state = {
     products: [
       {
         _id: "1",
         title: "Fresh Bananas",
         src: "../images/8.png",
-        description: "Organic Bananas - From Ecuador", 
+        description: "Organic Bananas - From Ecuador",
         content: "------------------------------------------------------------------",
         price: 1.50,
         weight: 2, //lbs
@@ -19,7 +37,7 @@ export class DataProvider extends Component {
         _id: "2",
         title: "Good & Gather Apples",
         src: "../images/9.png",
-        description: "Bag of Fresh, Organic Apples", 
+        description: "Bag of Fresh, Organic Apples",
         content: "------------------------------------------------------------------",
         price: 3.50,
         weight: 2, //lbs
@@ -29,7 +47,7 @@ export class DataProvider extends Component {
         _id: "3",
         title: "California Oranges",
         src: "../images/16.png",
-        description: "Bag of Fresh Oranges", 
+        description: "Bag of Fresh Oranges",
         content: "------------------------------------------------------------------",
         price: 4,
         weight: 4, //lbs
@@ -39,7 +57,7 @@ export class DataProvider extends Component {
         _id: "4",
         title: "Fresh Chicken Thighs",
         src: "../images/4.png",
-        description: "Pilgrim's Boneless Fresh Chicken Thighs", 
+        description: "Pilgrim's Boneless Fresh Chicken Thighs",
         content: "------------------------------------------------------------------",
         price: 6.90,
         weight: 5.5, //lbs
@@ -49,7 +67,7 @@ export class DataProvider extends Component {
         _id: "5",
         title: "Foster Farms Crispy Wings",
         src: "../images/12.png",
-        description: "Take Out Chicken Wings w/ Buffalo Sauce", 
+        description: "Take Out Chicken Wings w/ Buffalo Sauce",
         content: "------------------------------------------------------------------",
         price: 17.50,
         weight: 4, //lbs
@@ -169,9 +187,25 @@ export class DataProvider extends Component {
     cart: [],
     priceTotal: 0,
     weightTotal: 0,
+    name: '',
+    weight: 0,
+    price: 0,
+    quantity: 0,
+    description: '',
+    dbItems: []
     // shipping: 0,
   };
-
+  getItemsFromDB(){
+    axios.get('http://localhost:5000/item/')
+      .then(res => {
+        this.setState({
+          products: [...this.state.products, ...res.data]
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
   addCart = (id) => {
     const { products, cart } = this.state;
     const check = cart.every((item) => {
@@ -246,6 +280,7 @@ export class DataProvider extends Component {
   componentDidUpdate() {
     localStorage.setItem("dataCart", JSON.stringify(this.state.cart));
     localStorage.setItem("dataTotal", JSON.stringify(this.state.priceTotal));
+
   }
 
   componentDidMount() {
@@ -257,6 +292,7 @@ export class DataProvider extends Component {
     if (dataTotal !== null) {
       this.setState({ priceTotal: dataTotal });
     }
+     this.setState(this.getItemsFromDB());
   }
 
   componentWeightUpdate() {
@@ -276,9 +312,9 @@ export class DataProvider extends Component {
   }
 
   render() {
-    const { products, cart, priceTotal, weightTotal} = this.state; 
+    const { products, cart, priceTotal, weightTotal } = this.state;
 
-    const { addCart, reduction, increase, removeProduct, getPriceTotal, getWeightTotal} = this;
+    const { addCart, reduction, increase, removeProduct, getPriceTotal, getWeightTotal } = this;
     return (
       <DataContext.Provider
         value={{
@@ -294,6 +330,7 @@ export class DataProvider extends Component {
           getWeightTotal,
         }}
       >
+       
         {this.props.children}
       </DataContext.Provider>
     );

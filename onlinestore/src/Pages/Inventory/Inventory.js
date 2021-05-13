@@ -10,11 +10,32 @@ function Inventory() {
     const itemRes = await axios.get('http://localhost:5000/item/');
     setItem(itemRes.data);
   }
+  const [title, setTitle] = useState(null);
+  // async function deleteItemsBackend() {
+  //   // e.preventDefault()
+  //   // e.persist();;
+  //   console.log('here');
+  //   try {
+  //     const itemData = {
+  //       title,
+  //     };
+  //     await axios.delete('http://localhost:5000/item/deleteItem/',title);
+   
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // }
 
-  const deleteItem = (index) => {
-    let data = [...items];  
+  const deleteItem = async (title,index) => {
+    let data = [...items];
     data.splice(index, 1);
     setItem( data);
+    try {
+      await axios.delete('http://localhost:5000/item/deleteItem/',{ data: { title: title }});
+
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   // async function deleteItems() {
