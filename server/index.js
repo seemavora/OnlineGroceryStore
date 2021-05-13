@@ -18,7 +18,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.raw());
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: [
+      "http://localhost:3000",
+    ],
     credentials: true,
   })
 );
@@ -27,13 +29,12 @@ mongoose.connect(
   process.env.MDB_CONNECT,
   {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
+    useUnifiedTopology: true
   },
   (err) => {
     if (err) return console.error(err);
     console.log("Connected to MongoDB");
-  }
-);
+  });
 
 //set up routes by creating middle ware
 app.use("/auth", require("./routers/userRouter")); // app.use lets you run functions at certain paths
