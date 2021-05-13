@@ -19,12 +19,8 @@ function InventoryForm({ getItems }) {
   const [itemPrice, setItemPrice] = useState('');
   const [itemQuantity, setItemQuantity] = useState('');
   const [itemDescription, setItemDescription] = useState('');
-  
-  const [state, setState] = React.useState(false);
 
-  const handleClick = (newState) => () => {
-    setState(true);
-  };
+  const [state, setState] = React.useState(false);
 
   const handleClose = () => {
     setState(false);
@@ -49,6 +45,8 @@ function InventoryForm({ getItems }) {
       setItemPrice('');
       setItemQuantity('');
       setItemDescription('');
+
+      setState(true);
 
       getItems();
     } catch (err) {
@@ -123,10 +121,11 @@ function InventoryForm({ getItems }) {
           Save new item
         </Button>
         <Snackbar
+          autoHideDuration={3000}
           anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
           open={state}
           onClose={handleClose}
-          message="I love snacks"
+          message="New Item Added"
         />
         {/* <button type="submit" onSubmit={deleteItems}>Delete Item</button> */}
       </form>
