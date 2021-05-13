@@ -13,7 +13,7 @@ export class Products extends Component {
         {products.map((product) => (
           <div className="card" key={product._id}>
             <Link to={`/product/${product._id}`}>
-              <img src={product.src} alt="" />
+              <img src={product.src ? product.src : "../images/noImage.png"} alt="" />
             </Link>
             <div className="content">
               <h3>
