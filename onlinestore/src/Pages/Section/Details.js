@@ -29,6 +29,7 @@ export class Details extends Component {
     const { addCart } = this.context;
     return (
       <>
+      {console.log(this.props)}
         {product.map((item) => (
           <div className="details" key={item._id}>
             <img src={item.src} alt="" />
