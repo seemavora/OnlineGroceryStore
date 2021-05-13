@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { makeStyles, Button } from '@material-ui/core';
+import { makeStyles, Button, Snackbar } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles((theme) => ({
@@ -19,6 +19,12 @@ function InventoryForm({ getItems }) {
   const [itemPrice, setItemPrice] = useState('');
   const [itemQuantity, setItemQuantity] = useState('');
   const [itemDescription, setItemDescription] = useState('');
+
+  const [state, setState] = React.useState(false);
+
+  const handleClose = () => {
+    setState(false);
+  };
   async function saveItems(e) {
     e.preventDefault();
 
@@ -32,6 +38,16 @@ function InventoryForm({ getItems }) {
       };
       // await axios.post("http://localhost:5000/customer/", itemData);
       await axios.post('http://localhost:5000/item/', itemData);
+
+      //  clear form
+      setItemName('');
+      setItemWeight('');
+      setItemPrice('');
+      setItemQuantity('');
+      setItemDescription('');
+
+      setState(true);
+
       getItems();
     } catch (err) {
       console.error(err);
@@ -104,6 +120,13 @@ function InventoryForm({ getItems }) {
         <Button variant="contained" color="primary" type="submit">
           Save new item
         </Button>
+        <Snackbar
+          autoHideDuration={3000}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+          open={state}
+          onClose={handleClose}
+          message="New Item Added"
+        />
         {/* <button type="submit" onSubmit={deleteItems}>Delete Item</button> */}
       </form>
     </div>
