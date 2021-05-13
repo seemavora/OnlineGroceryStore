@@ -32,7 +32,7 @@ export class Details extends Component {
       {console.log(this.props)}
         {product.map((item) => (
           <div className="details" key={item._id}>
-            <img src={item.src ? item.src : "../public/noImage.png"}  alt="" />
+            <img src={item.src ? item.src : "../images/noImage.png"}  alt="" />
             <div className="box">
               <div className="row">
                 <h2>{item.title}</h2>
