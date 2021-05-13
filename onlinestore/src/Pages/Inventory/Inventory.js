@@ -10,11 +10,30 @@ function Inventory() {
     const itemRes = await axios.get('http://localhost:5000/item/');
     setItem(itemRes.data);
   }
+  const [title, setTitle] = useState(null);
+  async function deleteItemsBackend() {
+    // e.preventDefault()
+    // e.persist();;
+    console.log('here');
+    try {
+      const itemData = {
+        title,
+      };
+      // await axios.post("http://localhost:5000/customer/", itemData);
+      await axios.delete('http://localhost:5000/item/deleteItem/',title);
+      // console.log(itemData);
+      deleteItemsBackend(title);
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
-  const deleteItem = (index) => {
+  const deleteItem = (title,index) => {
     let data = [...items];  
     data.splice(index, 1);
     setItem( data);
+    deleteItemsBackend(title);
+
   };
 
   // async function deleteItems() {
